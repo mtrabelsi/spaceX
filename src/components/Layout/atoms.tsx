@@ -7,5 +7,4 @@ export const LayoutMain = s.main`
     max-width: ${tabletWidth};
     margin: 0 auto;
     color: ${defaultColor}
-`
-;
+`;

@@ -20,7 +20,6 @@ store.dispatch(fetchStarted())
 ReactDom.render(
     <Provider store={store}>
         <MainApp />
-    </Provider>
-    , 
+    </Provider>, 
     document.getElementById('root-elm')
 )

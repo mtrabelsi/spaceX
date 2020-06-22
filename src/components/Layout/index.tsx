@@ -5,7 +5,7 @@ type LayoutProps = {
     style?: object
 }
 
-export const  Layout: React.FC<LayoutProps> = (props) => {
+const Layout: React.FC<LayoutProps> = (props) => {
     return(<LayoutMain style={props.style}>
         {props.children}
     </LayoutMain>)
