@@ -5,7 +5,7 @@ import {
 } from './atoms';
 
 function TableItem(props : TableItemProps) {
-    const { itemData, renderData, dataType, itemClickHandler } = props
+    const { itemData, renderData, itemClickHandler } = props
     return (<StyledTableItem 
             onClick={(e: React.MouseEvent) => itemClickHandler('itemClickHandler')}
         >

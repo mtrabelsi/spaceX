@@ -20,6 +20,16 @@ export type DataLaunchType = {
     details: string,
     launch_site: {
         site_name: string
+    },
+    rocket: {
+        second_stage: {
+            payloads : Array<{
+                payload_id: string,
+                nationality: string,
+                manufacturer: string,
+                payload_type: string
+            }>
+        }
     }
 }
 

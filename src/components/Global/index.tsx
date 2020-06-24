@@ -26,7 +26,5 @@ export const VerticalEllipsis = (nbrOfLines: number) => `
 export const HorizontalEllipsis = (maxWidth: number) => `
   text-overflow: ellipsis;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: ${maxWidth};
-  -webkit-box-orient: vertical;
+  width: ${maxWidth}px;
 `;
