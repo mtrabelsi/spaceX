@@ -14,16 +14,17 @@ function Table(props : TableProps) {
     const { dataType, data, itemClickHandler } = props
     const dataLength : number =  data && data.length
     const historyArr = data as DataHistoryType[] 
-    const launchesArr =  data as DataLaunchType[]
-
-    return (<section>
-        {(dataType === 'history') && dataLength > 0 && historyArr.map((d: any) => (<TableItem
+    const launchesArr = data as DataLaunchType[]
+    return (<section key={new Date().getUTCDate()}>
+        {(dataType === 'history') && dataLength > 0 && historyArr.map((d: DataHistoryType) => (<TableItem
+            key={d.id}
             renderData={() => renderHistory(d)}
             dataType={dataType}
             itemData={d} 
             itemClickHandler={itemClickHandler} 
         />))}
-        {(dataType === 'launches') && dataLength > 0 && historyArr.map((d: any) => (<TableItem
+        {(dataType === 'launches') && dataLength > 0 && launchesArr.map((d: DataLaunchType) => (<TableItem
+            key={d.flight_number}
             renderData={() => renderLaunches(d)}
             dataType={dataType}
             itemData={d} 

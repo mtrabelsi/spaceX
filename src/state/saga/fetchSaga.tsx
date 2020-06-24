@@ -1,5 +1,5 @@
 import { takeLatest, put, spawn, all, call } from "redux-saga/effects";
-import { fetchSuccess, fetchError } from './../redux/actions'
+import { fetchSuccessHistory, fetchSuccessLaunches, fetchError } from './../redux/actions'
 
 function * fetchHistory() {
     try {
@@ -7,7 +7,7 @@ function * fetchHistory() {
         yield put({type: "FETCH_START"});
         const res = yield fetch("https://api.spacexdata.com/v3/history");
         const json = yield res.json();
-        yield put(fetchSuccess(json));
+        yield put(fetchSuccessHistory(json));
     } catch (error) {
         yield put(fetchError(error.message));
     }
@@ -18,7 +18,7 @@ function * fetchLaunches() {
         yield put({type: "FETCH_START"});
         const res = yield fetch("https://api.spacexdata.com/v3/launches");
         const json = yield res.json();
-        yield put(fetchSuccess(json));
+        yield put(fetchSuccessLaunches(json));
     } catch (error) {
         yield put(fetchError(error.message));
     }

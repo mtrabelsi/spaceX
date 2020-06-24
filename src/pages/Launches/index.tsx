@@ -13,8 +13,8 @@ type MamDisToProps = MapDispatchToPropsParam<AjaxPropsType, {}>
 
 const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props) => {
     const { history } = props as RouteComponentProps
-    const { data } = props as State
-    const arrData = data as DataLaunchType[]
+    const { launchesData } = props as State
+    const arrData = launchesData as DataLaunchType[]
     useEffect(() => {   
         const { reqFetchLaunches } = props as AjaxPropsType
         reqFetchLaunches()

@@ -12,9 +12,9 @@ type AjaxPropsType = {
 type MamDisToProps = MapDispatchToPropsParam<AjaxPropsType, {}>
 
 const History : React.FC<State | AjaxPropsType | RouteComponentProps> = (props) => {
-    const { data } = props as State
+    const { historyData } = props as State
     const { history } = props as RouteComponentProps
-    const arrData = data as DataHistoryType[]
+    const arrData = historyData as DataHistoryType[]
     useEffect(() => {   
         const { reqFetchHistory } = props as AjaxPropsType
         reqFetchHistory()

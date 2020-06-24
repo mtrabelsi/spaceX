@@ -12,6 +12,7 @@ const getAlign = (arr: any[], index: number): 'left' | 'center' | 'right' => {
         return 'right'
     }
 }
+
 export const renderHistory = (data: DataHistoryType) => {
     const {
         id,
@@ -50,6 +51,7 @@ export const renderHistory = (data: DataHistoryType) => {
             <Links>
                 {linksArr.map((linkObj, index) => 
                     <LinkWithTaget 
+                        key={linkObj.label}
                         style={{ textAlign: getAlign(linksArr, index) }} 
                         href={linkObj.link}
                     >

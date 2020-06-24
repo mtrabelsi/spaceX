@@ -15,10 +15,16 @@ export const fetchStarted = () => ({
     type: "FETCH_START"
 });
 
-export const fetchSuccess = (tasks: DataType) => ({
-    type: "FETCH_SUCCESS",
+export const fetchSuccessHistory = (tasks: DataType) => ({
+    type: "FETCH_SUCCESS_HISTORY",
     payload: tasks
 });
+
+export const fetchSuccessLaunches = (tasks: DataType) => ({
+    type: "FETCH_SUCCESS_LAUNCHES",
+    payload: tasks
+});
+
 export const fetchError = (errorMessage: ErrorMessageType) => ({
     type: "FETCH_ERROR",
     payload: errorMessage

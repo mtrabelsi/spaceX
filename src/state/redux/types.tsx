@@ -4,12 +4,18 @@ export type PayloadType = string | null | undefined
 export type DataType = unknown
 
 export type State = {
-    data: DataType,
+    historyData: unknown[],
+    launchesData: unknown[],
     isFetching: boolean,
     errorMessage: ErrorMessageType
 }
 
 export type UAction = {
-    type: string,
-    payload?: string | null | undefined
+    type:   'FETCH_SUCCESS_HISTORY' |
+            'FETCH_SUCCESS_LAUNCHES' |
+            'FETCH_ERROR' |
+            'FETCH_START' |
+            'REQ_FETCH_LAUNCHES' |
+            'REQ_FETCH_HISTORY',
+    payload?: unknown
 }

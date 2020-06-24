@@ -11,9 +11,6 @@ import NotFound from './pages/NotFound';
 
 type Empty = {}
 const MainApp : React.FC<State> = (props) => {
-    const { data } = props
-    const arrData = data as any[]
-
     return (<React.StrictMode>
         <Router>
         <div>
@@ -46,5 +43,4 @@ const mapStateToProps = (state : State ) : State => ({
     ...state
 })
 
-//const mapDispatchToProps
 export default connect(mapStateToProps, {})(MainApp)
