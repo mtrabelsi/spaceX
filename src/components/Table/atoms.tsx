@@ -19,7 +19,7 @@ export const FlightNumber = s.div`
     color: ${secondaryColor};
 `
 export const Details = s.div`
-    color: ${secondaryColor};
+    color: ${primarytColor};
     ${VerticalEllipsis(2)};
 `
 export const Links = s.div`
@@ -41,7 +41,7 @@ export const DataWrapper = s.div`
     
     justify-content: space-between;
 `
-export const OtherDataWrapper = s.div`
-    display: flex;
-    justify-content: space-between;
+export const MissionName = s.div`
+    color: ${secondaryColor};
+    font-weight: bold;
 `

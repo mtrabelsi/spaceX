@@ -17,6 +17,7 @@ export type DataLaunchType = {
     flight_number: number,
     mission_name: string,
     launch_date_utc: string,
+    details: string,
     launch_site: {
         site_name: string
     }
