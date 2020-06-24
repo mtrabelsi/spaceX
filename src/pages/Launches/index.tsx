@@ -33,8 +33,8 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
         >
             {dataLength > 0 && launchesArr.map((d: DataLaunchType) => (
                 <TableItem
-                    dataType='launches'
                     key={d.flight_number}
+                    dataType='launches'
                     renderData={() => renderLaunches(d)}
                     itemData={d} 
                     itemClickHandler={console.log} 

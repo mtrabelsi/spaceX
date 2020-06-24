@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+
 export type Link = {
     reddit: string | null,
     article: string | null,
@@ -34,7 +36,7 @@ export type DataLaunchType = {
 }
 
 export type TableItemProps = {
-    renderData: () => any,
+    renderData: () => ReactNode,
     dataType: 'history' | 'launches',
     itemData: DataHistoryType | DataLaunchType,
     itemClickHandler: (id: string) => void
