@@ -28,3 +28,9 @@ export const HorizontalEllipsis = (maxWidth: number) => `
   overflow: hidden;
   width: ${maxWidth}px;
 `;
+
+// Text and fonts
+export const fontFamily = 'Lato, "Lucida Grande", Tahoma, Sans-Serif'
+export const primaryFontSize = '16px'
+export const secondaryFontSize = '14px'
+

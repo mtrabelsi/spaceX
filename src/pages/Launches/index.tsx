@@ -7,6 +7,7 @@ import { DataLaunchType, DataHistoryType } from '../../components/Table/types';
 import Table from '../../components/Table';
 import TableItem from '../../components/Table/TableItem';
 import { renderLaunches } from '../../components/Table/index.helper';
+import InputSearch from '../../components/InputSearch';
 
 type AjaxPropsType = {
     reqFetchLaunches: () => void
@@ -26,6 +27,7 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
     }, [])
     
     return(<Layout showBackButton history={history}>
+        <InputSearch />
         <Table
             dataType='launches'
             abstractData={arrData}
