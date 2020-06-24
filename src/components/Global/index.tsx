@@ -10,3 +10,23 @@ export const backgroundImage = 'linear-gradient(120deg,#5378c6 15%,#239ad7 50%,#
 
 //responsive breakpoints
 export const tabletWidth = '768px';
+
+
+// A JS mixin for vertical Ellipsis
+export const VerticalEllipsis = (nbrOfLines: number) => `
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: ${nbrOfLines};
+  -webkit-box-orient: vertical;
+`;
+
+
+// A JS mixin for Horizontally Elipsis
+export const HorizontalEllipsis = (maxWidth: number) => `
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: ${maxWidth};
+  -webkit-box-orient: vertical;
+`;

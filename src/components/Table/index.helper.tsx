@@ -1,7 +1,17 @@
 import React from 'react'
-import { DataWrapper, Title, EventDateUnix, EventDateUTC, Details, Links } from './atoms'
+import { DataWrapper, Title, EventDateUnix, EventDateUTC, Details, Links, Link } from './atoms'
 import { DataHistoryType, DataLaunchType } from './types'
 
+const LinkWithTaget = (props: any) => <Link {...props} target="_blank">{props.children}</Link>
+const getAlign = (arr: any[], index: number): 'left' | 'center' | 'right' => {
+    if(index===0) {
+        return 'left'
+    } else if(index<arr.length-1) {
+        return 'center'
+    } else {
+        return 'right'
+    }
+}
 export const renderHistory = (data: DataHistoryType) => {
     const {
         id,
@@ -11,7 +21,20 @@ export const renderHistory = (data: DataHistoryType) => {
         details,
         links: { reddit, article, wikipedia }
     } = data as DataHistoryType
-
+    const linksArr = [
+        {
+            link: reddit,
+            label: 'Reddit'
+        },
+        {
+            link: article,
+            label: 'Article'
+        },
+        {
+            link: wikipedia,
+            label: 'Wikipedia'
+        }
+    ].filter(lo => lo.link !== null)
     return (<div>
         <DataWrapper>
             <Title>{title}</Title>
@@ -22,10 +45,17 @@ export const renderHistory = (data: DataHistoryType) => {
         </DataWrapper>
         <DataWrapper>
             <Details>{details}</Details>
+        </DataWrapper>
+        <DataWrapper>
             <Links>
-                {reddit}
-                {article}
-                {wikipedia}
+                {linksArr.map((linkObj, index) => 
+                    <LinkWithTaget 
+                        style={{ textAlign: getAlign(linksArr, index) }} 
+                        href={linkObj.link}
+                    >
+                        {linkObj.label}
+                    </LinkWithTaget>
+                )}
             </Links>
         </DataWrapper>
     </div>
