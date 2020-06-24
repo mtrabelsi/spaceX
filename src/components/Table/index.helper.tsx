@@ -1,5 +1,5 @@
 import React from 'react'
-import { DataWrapper, Title, EventDateUnix, EventDateUTC, Details, Links, Link, MissionName } from './atoms'
+import { DataWrapper, Title, EventDateUnix, EventDateUTC, Details, Links, Link, MissionName, LaunchSite } from './atoms'
 import { DataHistoryType, DataLaunchType } from './types'
 
 const LinkWithTaget = (props: any) => <Link {...props} target="_blank">{props.children}</Link>
@@ -75,7 +75,7 @@ export const renderLaunches = (data: DataLaunchType) => {
     <div>
         <DataWrapper>
             <MissionName>{mission_name}</MissionName>
-            <EventDateUnix>{launch_site && launch_site.site_name}</EventDateUnix>
+            <LaunchSite>{launch_site && launch_site.site_name}</LaunchSite>
         </DataWrapper>
         <DataWrapper>
             <EventDateUTC>{launch_date_utc}</EventDateUTC>

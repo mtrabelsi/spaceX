@@ -45,3 +45,6 @@ export const MissionName = s.div`
     color: ${secondaryColor};
     font-weight: bold;
 `
+export const LaunchSite = s.div`
+    color: ${defaultColor};
+`
