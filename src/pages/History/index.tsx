@@ -47,7 +47,7 @@ const mapStateToProps = (state : State) : State => ({
     ...state
 })
 
-const mapDispatchToProps : MamDisToProps = dispatch => {
+const mapDispatchToProps : MamDisToProps = (dispatch : (p: UAction) => void) => {
     return {
         reqFetchHistory: () => dispatch({ type: 'REQ_FETCH_HISTORY' })
     }

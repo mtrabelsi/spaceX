@@ -12,6 +12,7 @@ export const InputSearchWrap = s.section`
   box-shadow: 0px 3px 29px rgba(59, 74, 116, 0.135473);
   border-radius: 10px;
   padding: 17px;
+  margin: 7px 0;
 `
 export const MarginFix = s.section`
   margin-bottom: 12px;

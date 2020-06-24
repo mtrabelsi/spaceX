@@ -10,11 +10,11 @@ const InputSearch : React.FC<any> = (props) => {
             >
             <MarginFix>
               <InputText
-                placeholder={props.placeholder || 'Write something'}
+                placeholder={props.placeholder || 'Placeholder not set!'}
                 rightIcon={SearchIcon}
+                hasIconRight={true}
                 primaryBorder={true}
                 primaryColor={true}
-                hasIconRight={true}
                 {...props}
               />
             </MarginFix>

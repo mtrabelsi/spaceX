@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { connect, MapDispatchToPropsParam } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { connect, MapDispatchToPropsParam, useSelector } from 'react-redux'
 import { UAction, State } from './../../state/redux/types';
 import Layout from '../../components/Layout';
 import { RouteComponentProps } from 'react-router-dom';
@@ -10,16 +10,27 @@ import { renderLaunches } from '../../components/Table/index.helper';
 import InputSearch from '../../components/InputSearch';
 
 type AjaxPropsType = {
-    reqFetchLaunches: () => void
+    reqFetchLaunches: () => void,
+    searchByMissionName: (missionName: string) => void
 }
 type MamDisToProps = MapDispatchToPropsParam<AjaxPropsType, {}>
 
 const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props) => {
+    const [missionName, setMissionName] = useState<string>('')
     const { history } = props as RouteComponentProps
+    const { searchByMissionName } = props as AjaxPropsType
     const { launchesData } = props as State
     const arrData = launchesData as DataLaunchType[]
     const dataLength : number =  launchesData && launchesData.length
     const launchesArr = launchesData as DataLaunchType[]
+
+    const handleMissionChange = (e: React.ChangeEvent<HTMLInputElement>) : void => {
+        const newName : string = e.target.value
+        setMissionName(newName)
+    }
+    const handleSearchByMissionName = () => {
+        searchByMissionName(missionName)
+    }
 
     useEffect(() => {   
         const { reqFetchLaunches } = props as AjaxPropsType
@@ -27,7 +38,13 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
     }, [])
     
     return(<Layout showBackButton history={history}>
-        <InputSearch />
+        <InputSearch 
+            placeholder="Filter by Mission name"
+            rightIconClickHandler={handleSearchByMissionName}
+            value={missionName}
+            onChange={handleMissionChange}
+        />
+
         <Table
             dataType='launches'
             abstractData={arrData}
@@ -49,9 +66,10 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
 const mapStateToProps = (state : State ) : State => ({
     ...state
 })
-const mapDispatchToProps : MamDisToProps = dispatch => {
+const mapDispatchToProps : MamDisToProps = (dispatch : (p: UAction) => void) => {
     return {
-        reqFetchLaunches: () => dispatch({ type: 'REQ_FETCH_LAUNCHES' })
+        reqFetchLaunches: () => dispatch({ type: 'REQ_FETCH_LAUNCHES' }),
+        searchByMissionName: (missionName) => dispatch({ type: 'SEARCH_LAUNCHES_BY_MISSION', payload: missionName })
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Launches)

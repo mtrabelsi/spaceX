@@ -16,6 +16,7 @@ export type UAction = {
             'FETCH_ERROR' |
             'FETCH_START' |
             'REQ_FETCH_LAUNCHES' |
-            'REQ_FETCH_HISTORY',
+            'REQ_FETCH_HISTORY' |
+            'SEARCH_LAUNCHES_BY_MISSION',
     payload?: unknown
 }

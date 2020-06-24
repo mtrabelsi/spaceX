@@ -30,4 +30,5 @@ export const Input = s.input`
 export const Img = s.img`
   height: 20px;
   padding: 9px;
+  cursor: pointer;
 `
