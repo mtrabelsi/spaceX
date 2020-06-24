@@ -15,7 +15,7 @@ function Table(props : TableProps) {
     const dataLength : number =  data && data.length
     const historyArr = data as DataHistoryType[] 
     const launchesArr = data as DataLaunchType[]
-    return (<section key={new Date().getUTCDate()}>
+    return (<section>
         {(dataType === 'history') && dataLength > 0 && historyArr.map((d: DataHistoryType) => (<TableItem
             key={d.id}
             renderData={() => renderHistory(d)}
