@@ -1,6 +1,8 @@
 # How to run
 
-Assuming you already running the Node.js, to launch the frontend part you need Just run the run
+Assuming you have already installed Node.js.
+
+To launch the frontend part you need Just run the run
 
 ```
 npm i 
@@ -60,9 +62,10 @@ Notice how, the app can work on different screens without breaking the UI, in XL
 
 # State Management
 
-Since the application is meant to scale in the future, we implimented our state management system using Redux/saga, only the connected pages only have the data that they need, and the actions to change them.
+Since the application is meant to scale in the future, we implimented our state management system using Redux/saga, so all connected pages (using redux-connect)  have the data that they need and the actions to dispatch them - when they to.
 
-However: for the current stage of the app, redux library or any other would be overkill for the current state of this app (we only have 2 pages!). But only considering the fact that we are expecting a bigger code base we integrated them.
+That being said: for the current stage of the app, redux library or any other would be overkill at the moment, in fact, we only have 2 pages!. 
+But only considering the fact that we are expecting a bigger code base we integrated them.
 
 ## Reusability in mind
 
