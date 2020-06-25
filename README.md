@@ -2,7 +2,7 @@
 
 Assuming you have already installed Node.js.
 
-To launch the frontend part you need Just run the run
+To launch the frontend part you need just to run
 
 ```
 npm i 
