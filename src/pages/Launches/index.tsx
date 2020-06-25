@@ -20,6 +20,7 @@ type MamDisToProps = MapDispatchToPropsParam<AjaxPropsType, {}>
 const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props) => {
     const [filter, setFilter] = useState<USearchFilter>({ limit: 7, offset: 0 })
     const [missionName, setMissionName] = useState<string>('')
+    const [shouldReload, setReload] = useState<boolean>(false)
     const { history } = props as RouteComponentProps
     const { searchByMissionName, reqFetchLaunches } = props as AjaxPropsType
     const { launchesData } = props as State
@@ -29,26 +30,32 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
     const handleMissionChange = (e: React.ChangeEvent<HTMLInputElement>) : void => {
         const newName : string = e.target.value
         setMissionName(newName)
+        searchByMissionName(newName)
     }
-    const handleSearchByMissionName = () => {
-        searchByMissionName(missionName)
-    }
+    const cleanupSearch = () => setMissionName('')
     
     //we trigger fetch everytime the filter changes
     useEffect(() => {   
+        if(missionName!=='') {
+            /* 
+                we only search locally, Abort the process!
+                we only allow remote search when missionName is Empty
+            */
+            return
+        }
         const { limit, offset } =  filter
         reqFetchLaunches({
             limit,
             offset
         })
-    }, [filter])
+    }, [filter, missionName])
     
     const loader = <div>Loading ...</div>;
 
     return(<Layout showBackButton history={history}>
         <InputSearch 
             placeholder="Filter by Mission name"
-            rightIconClickHandler={handleSearchByMissionName}
+            rightIconClickHandler={cleanupSearch}
             value={missionName}
             onChange={handleMissionChange}
         />

@@ -30,6 +30,9 @@ export const Button = s.button<ButtonPropType>`
   font-family: ${fontFamily};
   text-transform: uppercase;
   font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export const ButtonText = s.span`

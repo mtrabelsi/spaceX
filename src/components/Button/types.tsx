@@ -10,5 +10,6 @@ export type ButtonPropType = {
     hasIconLeft?: boolean,
     start?: boolean,
     simpleMode?: boolean,
-    special?: boolean
+    special?: boolean,
+    onClick?: (e: React.MouseEvent) => void
 }

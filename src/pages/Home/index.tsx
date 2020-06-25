@@ -8,18 +8,18 @@ import { Button } from '../../components/Button/atoms';
 const Home : React.FC<RouteComponentProps> = (props) => {
     const { history } = props
     return (<Layout style={{ backgroundImage }}>
-        Home page
+        
         <Button 
             simpleMode 
             special 
-            onClick={e => history.push('/history')}
+            onClick={(e: React.MouseEvent) => history.push('/history')}
         >
             History 
         </Button>
         <Button 
             simpleMode 
             special 
-            onClick={e => history.push('/launches')}
+            onClick={(e: React.MouseEvent) => history.push('/launches')}
         >
             Launches 
         </Button>
