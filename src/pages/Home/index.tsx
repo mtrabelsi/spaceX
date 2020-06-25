@@ -25,7 +25,8 @@ const Home : React.FC<RouteComponentProps> = (props) => {
                         display: 'flex', 
                         justifyContent: 'space-evenly',   
                         alignItems: 'center',
-                        padding: '100px 50px'
+                        padding: '100px 50px',
+                        flexWrap: 'wrap'
                     }}
                 >
                     <Button 

@@ -20,7 +20,7 @@ const Layout: React.FC<LayoutProps | RouteComponentProps> = (props) => {
     } = props as (LayoutProps & RouteComponentProps)
 
     return(<LayoutMain style={style}>
-        <LayoutTopBar style={topBarStyle}>
+        <LayoutTopBar style={{...topBarStyle, flexWrap: 'wrap'}}>
             {showBackButton &&<Button 
                 hasIconLeft={true}
                 iconLeft={LeftArrowIcon}
