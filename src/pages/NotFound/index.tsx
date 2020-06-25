@@ -8,7 +8,7 @@ type NotFoundProps = {
 
 function NotFound(props: NotFoundProps) {
 
-    return (<Layout>
+    return (<Layout title="Horrible things happen!">
         Requested page does not exist!
     </Layout>)
     

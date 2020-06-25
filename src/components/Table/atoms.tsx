@@ -1,5 +1,5 @@
 import s from 'styled-components';
-import { defaultColor, primarytColor, lightColor, secondaryColor, VerticalEllipsis } from '../Global'
+import { defaultColor, primarytColor, lightColor, secondaryColor, VerticalEllipsis, fontify } from '../Global'
 
 export const StyledTableItem = s.section`
     border-bottom: 1px solid silver;
@@ -38,7 +38,7 @@ export const Link = s.a`
 export const DataWrapper = s.div`
     padding: 5px;
     display: flex;
-    
+    ${fontify()};
     justify-content: space-between;
 `
 export const MissionName = s.div`

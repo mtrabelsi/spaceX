@@ -15,6 +15,17 @@ export const backgroundImage = 'linear-gradient(120deg,#5378c6 15%,#239ad7 50%,#
 //responsive breakpoints
 export const tabletWidth = '768px';
 
+// Text and fonts
+export const fontFamily = 'Lato,sans-serif';
+export const titleFontSize = '30px'
+export const primaryFontSize = '16px'
+export const secondaryFontSize = '14px'
+
+
+// shadow and boxes
+export const defaultBoxShadow = '0px 3px 29px rgba(59, 74, 116, 0.135473)'
+export const specialBoxShadow = '0 1px 3px rgba(20,167,133,.4)'
+
 
 // A JS mixin for vertical Ellipsis
 export const VerticalEllipsis = (nbrOfLines: number) => `
@@ -33,11 +44,7 @@ export const HorizontalEllipsis = (maxWidth: number) => `
   width: ${maxWidth}px;
 `;
 
-// Text and fonts
-export const fontFamily = 'Lato,sans-serif';
-export const primaryFontSize = '16px'
-export const secondaryFontSize = '14px'
-
-// shadow and boxes
-export const defaultBoxShadow = '0px 3px 29px rgba(59, 74, 116, 0.135473)'
-export const specialBoxShadow = '0 1px 3px rgba(20,167,133,.4)'
+// A JS mixin for Horizontally Elipsis
+export const fontify = () => `
+  font-family: ${fontFamily};
+`;

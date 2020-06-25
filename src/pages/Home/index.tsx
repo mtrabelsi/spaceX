@@ -7,7 +7,10 @@ import { Button } from '../../components/Button/atoms';
 
 const Home : React.FC<RouteComponentProps> = (props) => {
     const { history } = props
-    return (<Layout style={{ backgroundImage }}>
+    return (<Layout 
+            style={{ backgroundImage }}
+            title="Home View"
+        >
         
         <Button 
             simpleMode 

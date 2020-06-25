@@ -24,7 +24,11 @@ const History : React.FC<State | AjaxPropsType | RouteComponentProps> = (props) 
         reqFetchHistory()
     }, [])
 
-    return(<Layout showBackButton history={history}>
+    return(<Layout 
+            showBackButton 
+            history={history}
+            title="History View"
+        >
         <Table
             dataType='history'
             abstractData={arrData}

@@ -52,7 +52,11 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
     
     const loader = <div>Loading ...</div>;
 
-    return(<Layout showBackButton history={history}>
+    return(<Layout 
+            showBackButton 
+            history={history}
+            title="Launches View"
+        >
         <InputSearch 
             placeholder="Filter by Mission name"
             rightIconClickHandler={cleanupSearch}
