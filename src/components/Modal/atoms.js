@@ -25,6 +25,7 @@ export const ModalMain = s.div`
 export const ModalControl = s.div`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 `
 export const ModalTitle = s.h1`
 `
