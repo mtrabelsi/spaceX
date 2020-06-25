@@ -44,7 +44,10 @@ export default function* rootSaga () {
         watchHistoryFetch,
         watchLaunchesFetch
     ];
-  
+    /*
+        This block will make sure that even one call is failed (failed ajax call) it will automatically
+        re-enable all the saga watcher
+    */
     yield all(sagas.map(saga =>
       spawn(function* () {
         while (true) {
