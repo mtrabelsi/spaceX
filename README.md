@@ -70,3 +70,8 @@ But only considering the fact that we are expecting a bigger code base we integr
 ## Reusability in mind
 
 The app is built to be expected to scale, and most of the code (especially components folder) will be the basic building bricks for all pages and it provide the necessary components to be re-used.
+
+
+## Router Error management
+
+When you try to visit a non-existing page, a custom Error page will show up instead.
