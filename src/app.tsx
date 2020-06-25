@@ -13,7 +13,6 @@ type Empty = {}
 const MainApp : React.FC<State> = (props) => {
     return (<React.StrictMode>
         <Router>
-        <div>
             <Switch>
                 <Route
                     path="/"
@@ -34,7 +33,6 @@ const MainApp : React.FC<State> = (props) => {
                     component={NotFound} 
                 />
             </Switch>
-        </div>
         </Router>
     </React.StrictMode>)
 } 

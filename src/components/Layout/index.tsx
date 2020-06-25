@@ -6,22 +6,29 @@ import LeftArrowIcon from './../../assets/icons/Left-Arrow.png'
 type LayoutProps = {
     style?: object,
     showBackButton?: boolean,
-    title: string
+    title: string,
+    topBarStyle?: object
 }
 
 const Layout: React.FC<LayoutProps | RouteComponentProps> = (props) => {
-    const { showBackButton, style, history, title } = props as (LayoutProps & RouteComponentProps)
+    const { 
+        showBackButton, 
+        style, 
+        history, 
+        title,
+        topBarStyle
+    } = props as (LayoutProps & RouteComponentProps)
 
     return(<LayoutMain style={style}>
-        {showBackButton && <LayoutTopBar>
-            <Button 
+        <LayoutTopBar style={topBarStyle}>
+            {showBackButton &&<Button 
                 hasIconLeft={true}
                 iconLeft={LeftArrowIcon}
                 onClick={e => history.goBack()}
                 value="Home"
-            />
-           <LayoutTitle>{title}</LayoutTitle>
-        </LayoutTopBar>}
+            />}
+            {title !== '' && <LayoutTitle>{title}</LayoutTitle>}
+        </LayoutTopBar>
         {props.children}
     </LayoutMain>)
 }
