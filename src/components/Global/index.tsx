@@ -5,6 +5,10 @@ export const secondaryColor = '#239ad7';
 export const lightColor = '#869ab8';
 export const veryLightColor = 'white';
 
+export const startColor = '#5378c6'
+export const endColor = '#19d1a6'
+
+
 // background
 export const backgroundImage = 'linear-gradient(120deg,#5378c6 15%,#239ad7 50%,#05d5ff 75%,#19d1a6)';
 
@@ -30,7 +34,10 @@ export const HorizontalEllipsis = (maxWidth: number) => `
 `;
 
 // Text and fonts
-export const fontFamily = 'Lato, "Lucida Grande", Tahoma, Sans-Serif'
+export const fontFamily = 'Lato,sans-serif';
 export const primaryFontSize = '16px'
 export const secondaryFontSize = '14px'
 
+// shadow and boxes
+export const defaultBoxShadow = '0px 3px 29px rgba(59, 74, 116, 0.135473)'
+export const specialBoxShadow = '0 1px 3px rgba(20,167,133,.4)'

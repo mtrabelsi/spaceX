@@ -1,14 +1,16 @@
 import {
     DataType,
-    ErrorMessageType
+    ErrorMessageType,
+    USearchFilter
 } from './types'
 
 export const reqFetchHistory = () => ({
     type: "REQ_FETCH_HISTORY"
 });
 
-export const fetchLaunches = () => ({
-    type: "REQ_FETCH_LAUNCHES"
+export const fetchLaunches = (filter? : USearchFilter) => ({
+    type: "REQ_FETCH_LAUNCHES",
+    payload: filter
 });
 
 export const fetchStarted = () => ({

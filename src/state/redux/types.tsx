@@ -20,3 +20,8 @@ export type UAction = {
             'SEARCH_LAUNCHES_BY_MISSION',
     payload?: unknown
 }
+
+export type USearchFilter = {
+    limit: number,
+    offset: number
+}

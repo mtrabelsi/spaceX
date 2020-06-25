@@ -1,5 +1,7 @@
-import { takeLatest, put, spawn, all, call } from "redux-saga/effects";
+import { takeLatest, put, spawn, all, call } from "redux-saga/effects"
+import queryString from 'query-string'
 import { fetchSuccessHistory, fetchSuccessLaunches, fetchError } from './../redux/actions'
+import { USearchFilter, UAction } from "../redux/types";
 
 function * fetchHistory() {
     try {
@@ -13,10 +15,14 @@ function * fetchHistory() {
     }
 }
 
-function * fetchLaunches() {
+function * fetchLaunches({ payload: filter }: UAction) {
+    let query : string = ''
+    if(filter) {
+      query = '?'.concat(queryString.stringify(filter))
+    }
     try {
         yield put({type: "FETCH_START"});
-        const res = yield fetch("https://api.spacexdata.com/v3/launches");
+        const res = yield fetch(`https://api.spacexdata.com/v3/launches${query}`);
         const json = yield res.json();
         yield put(fetchSuccessLaunches(json));
     } catch (error) {
@@ -30,7 +36,7 @@ function * watchHistoryFetch() {
 }
 
 function * watchLaunchesFetch() {
-    yield takeLatest("REQ_FETCH_LAUNCHES", fetchLaunches)
+    yield takeLatest("REQ_FETCH_LAUNCHES", (action: UAction) => fetchLaunches(action))
 }
 
 export default function* rootSaga () {
