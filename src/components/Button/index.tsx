@@ -15,7 +15,8 @@ const Btn: React.FC<ButtonPropType | RouteComponentProps> = (props) => {
     hasIconLeft,
     value,
     imgStyle,
-    textStyle
+    textStyle, 
+    isDanger
   } = props as ButtonPropType
   return (
     <Button

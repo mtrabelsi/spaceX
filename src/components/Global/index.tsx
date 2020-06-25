@@ -4,7 +4,7 @@ export const primarytColor = '#506690';
 export const secondaryColor = '#239ad7';
 export const lightColor = '#869ab8';
 export const veryLightColor = 'white';
-
+export const errorColor = '#df4759'
 export const startColor = '#5378c6'
 export const endColor = '#19d1a6'
 

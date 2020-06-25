@@ -11,5 +11,6 @@ export type ButtonPropType = {
     start?: boolean,
     simpleMode?: boolean,
     special?: boolean,
-    onClick?: (e: React.MouseEvent) => void
+    onClick?: (e: React.MouseEvent) => void,
+    isDanger?: boolean
 }

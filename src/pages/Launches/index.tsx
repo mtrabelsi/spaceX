@@ -9,7 +9,9 @@ import TableItem from '../../components/Table/TableItem';
 import { renderLaunches } from '../../components/Table/index.helper';
 import InputSearch from '../../components/InputSearch';
 import Pagination from '../../components/Pagination';
+import Modal from '../../components/Modal';
 
+const MAX_PER_PAGE = 7
 type AjaxPropsType = {
     reqFetchLaunches: (filter?: USearchFilter) => void,
     searchByMissionName: (missionName: string) => void
@@ -18,9 +20,10 @@ type AjaxPropsType = {
 type MamDisToProps = MapDispatchToPropsParam<AjaxPropsType, {}>
 
 const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props) => {
-    const [filter, setFilter] = useState<USearchFilter>({ limit: 7, offset: 0 })
+    const [filter, setFilter] = useState<USearchFilter>({ limit: MAX_PER_PAGE, offset: 0 })
     const [missionName, setMissionName] = useState<string>('')
     const [shouldReload, setReload] = useState<boolean>(false)
+    const [isModalOpen, changeModal] = useState<boolean>(false)
     const { history } = props as RouteComponentProps
     const { searchByMissionName, reqFetchLaunches } = props as AjaxPropsType
     const { launchesData } = props as State
@@ -37,10 +40,6 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
     //we trigger fetch everytime the filter changes
     useEffect(() => {   
         if(missionName!=='') {
-            /* 
-                we only search locally, Abort the process!
-                we only allow remote search when missionName is Empty
-            */
             return
         }
         const { limit, offset } =  filter
@@ -57,6 +56,12 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
             history={history}
             title="Launches View"
         >
+        {isModalOpen && <Modal 
+            title="this should be dynamic"
+            history={history} 
+            onSubmitHandle={() => changeModal(false)}
+            onCloseHandle={() => changeModal(false)}
+        />}
         <InputSearch 
             placeholder="Filter by Mission name"
             rightIconClickHandler={cleanupSearch}
@@ -75,12 +80,12 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
                     dataType='launches'
                     renderData={() => renderLaunches(d)}
                     itemData={d} 
-                    itemClickHandler={console.log} 
+                    itemClickHandler={e => changeModal(true)} 
                 />
             ))}
         </Table>
         <Pagination 
-            itemsCountPerPage={7}
+            itemsCountPerPage={MAX_PER_PAGE}
             lastQueriedLength={arrData.length}
             limit={filter.limit}
             offset={filter.offset}

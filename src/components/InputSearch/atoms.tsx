@@ -4,12 +4,13 @@ import {
   primarytColor,
   primaryFontSize,
   fontFamily,
-  secondaryFontSize
+  secondaryFontSize,
+  defaultBoxShadow
 } from './../Global'
 
 export const InputSearchWrap = s.section`
   border: 1px solid ${primarytColor};
-  box-shadow: 0px 3px 29px rgba(59, 74, 116, 0.135473);
+  box-shadow: ${defaultBoxShadow};
   border-radius: 10px;
   padding: 17px;
   margin: 7px 0;
