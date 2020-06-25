@@ -1,5 +1,6 @@
 import { State, UAction } from "./types";
 import { DataHistoryType, DataLaunchType } from "../../components/Table/types";
+import { filterList } from "../../utils";
 
 const INITIAL_STATE : State = {
     historyData: [],
@@ -20,7 +21,8 @@ const fetchTasksReducer = (state : State = INITIAL_STATE, action : UAction) : St
             return {
                     ...state,
                     //filter() does not mutate the array on which it is called, so we are safe here
-                    launchesData: launchesData.filter(ld => ld.mission_name === action.payload)
+                    
+                    launchesData: action.payload ? filterList(action.payload as string, 'mission_name', launchesData) : launchesData
                 };
         case "FETCH_SUCCESS_HISTORY":
         return {
