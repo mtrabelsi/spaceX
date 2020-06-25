@@ -65,6 +65,7 @@ export const renderHistory = (data: DataHistoryType) => {
 }
 
 export const renderLaunches = (data: DataLaunchType) => {
+    console.log("we render");
     const {
         flight_number,
         mission_name,

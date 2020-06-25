@@ -39,5 +39,5 @@ export type TableItemProps = {
     renderData: () => ReactNode,
     dataType: 'history' | 'launches',
     itemData: DataHistoryType | DataLaunchType,
-    itemClickHandler: (id: string) => void
+    itemClickHandler: (callbackRender: ReactNode) => void
 }

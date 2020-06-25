@@ -5,10 +5,12 @@ import {
     fontFamily,
     secondaryFontSize,
     defaultBoxShadow,
-    tabletWidth
+    tabletWidth,
+    fontify
   } from './../Global'
   
 export const ModalMain = s.div`
+  ${fontify()};
     width: calc(100% - 60px);
     max-width: calc(${tabletWidth} - 20px);
     min-height: 300px;

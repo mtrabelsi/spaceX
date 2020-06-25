@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, ReactNode } from 'react'
 import { connect, MapDispatchToPropsParam, useSelector } from 'react-redux'
 import { UAction, State, USearchFilter } from './../../state/redux/types';
 import Layout from '../../components/Layout';
@@ -24,6 +24,8 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
     const [missionName, setMissionName] = useState<string>('')
     const [shouldReload, setReload] = useState<boolean>(false)
     const [isModalOpen, changeModal] = useState<boolean>(false)
+    // this is rendered when user click on a row
+    const [renderResult, setRenderResult] = useState<ReactNode>({})
     const { history } = props as RouteComponentProps
     const { searchByMissionName, reqFetchLaunches } = props as AjaxPropsType
     const { launchesData } = props as State
@@ -57,11 +59,13 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
             title="Launches View"
         >
         {isModalOpen && <Modal 
-            title="this should be dynamic"
+            title="Modal view"
             history={history} 
             onSubmitHandle={() => changeModal(false)}
             onCloseHandle={() => changeModal(false)}
-        />}
+        >
+            {renderResult}
+        </Modal>}
         <InputSearch 
             placeholder="Filter by Mission name"
             rightIconClickHandler={cleanupSearch}
@@ -80,7 +84,12 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
                     dataType='launches'
                     renderData={() => renderLaunches(d)}
                     itemData={d} 
-                    itemClickHandler={e => changeModal(true)} 
+                    itemClickHandler={(renderModalData: any) => {
+                        changeModal(true);
+                        setRenderResult(
+                            renderModalData()
+                        );
+                    }} 
                 />
             ))}
         </Table>
