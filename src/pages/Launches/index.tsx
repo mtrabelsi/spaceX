@@ -84,10 +84,10 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
                     dataType='launches'
                     renderData={() => renderLaunches(d)}
                     itemData={d} 
-                    itemClickHandler={(renderModalData: any) => {
+                    itemClickHandler={() => {
                         changeModal(true);
                         setRenderResult(
-                            renderModalData()
+                            renderLaunches(d)
                         );
                     }} 
                 />
