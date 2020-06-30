@@ -82,7 +82,7 @@ export const renderLaunches = (data: DataLaunchType) => {
         manufacturer,
         payload_id,
         nationality,
-        payload_type
+        payload_type, 
     } = payloads && payloads[0]
     return (
     <div>
@@ -101,6 +101,7 @@ export const renderLaunches = (data: DataLaunchType) => {
         <DataWrapper>
             <PayloadType>{payload_type}</PayloadType>
         </DataWrapper>
+
     </div>
     )
 }
