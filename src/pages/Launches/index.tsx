@@ -129,7 +129,7 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
                     itemClickHandler={() => {
                         changeModal(true);
                         setRenderResult(
-                            renderLaunches(d)
+                            renderLaunches(d, true)// isLoadedInModal=true to show the video
                         );
                     }} 
                 />

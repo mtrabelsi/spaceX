@@ -23,6 +23,9 @@ export type DataLaunchType = {
     launch_site: {
         site_name: string
     },
+    links: {
+        youtube_id: string
+    },
     rocket: {
         second_stage: {
             payloads : Array<{
@@ -34,7 +37,9 @@ export type DataLaunchType = {
         }
     }
 }
-
+export type DataWrapperType = {
+    isCentered?: boolean
+}
 export type TableItemProps = {
     renderData: () => ReactNode,
     dataType: 'history' | 'launches',

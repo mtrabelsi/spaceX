@@ -1,5 +1,6 @@
 import s from 'styled-components';
 import { defaultColor, primarytColor, lightColor, secondaryColor, VerticalEllipsis, fontify } from '../Global'
+import { DataWrapperType } from './types';
 
 export const StyledTableItem = s.section`
     border-bottom: 1px solid silver;
@@ -35,11 +36,12 @@ export const Link = s.a`
     color: ${secondaryColor};
     font-weight: bold;
 `
-export const DataWrapper = s.div`
+
+export const DataWrapper = s.div<DataWrapperType>`
     padding: 5px;
     display: flex;
     ${fontify()};
-    justify-content: space-between;
+    justify-content: ${p => p.isCentered ? 'center' : 'space-between'};
 `
 export const MissionName = s.div`
     color: ${secondaryColor};

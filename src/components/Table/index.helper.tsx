@@ -1,8 +1,11 @@
 import React from 'react'
+import moment from 'moment'
 import { DataWrapper, Title, EventDateUnix, EventDateUTC, Details, Links, Link, MissionName, LaunchSite, Nationality, Manufacturer, PayloadType } from './atoms'
 import { DataHistoryType, DataLaunchType } from './types'
+import { formatDateLayout } from '../../utils'
 
 const LinkWithTaget = (props: any) => <Link {...props} target="_blank">{props.children}</Link>
+
 const getAlign = (arr: any[], index: number): 'left' | 'center' | 'right' => {
     if(index===0) {
         return 'left'
@@ -64,7 +67,7 @@ export const renderHistory = (data: DataHistoryType) => {
     )
 }
 
-export const renderLaunches = (data: DataLaunchType) => {
+export const renderLaunches = (data: DataLaunchType, isLoadedInModal?: boolean) => {
     console.log("we render");
     const {
         flight_number,
@@ -72,11 +75,15 @@ export const renderLaunches = (data: DataLaunchType) => {
         launch_date_utc,
         launch_site,
         details,
+        links : {
+            youtube_id
+        },
         rocket: {
             second_stage: {
                 payloads
             }
-        }
+        },
+        links
     } = data as DataLaunchType
     const {
         manufacturer,
@@ -84,14 +91,16 @@ export const renderLaunches = (data: DataLaunchType) => {
         nationality,
         payload_type, 
     } = payloads && payloads[0]
+
+    const formattedDate = moment(launch_date_utc).format(formatDateLayout)
     return (
-    <div>
+    <div style={{ paddingBottom: 20 }}>
         <DataWrapper>
             <MissionName>{mission_name}</MissionName>
             <LaunchSite>{launch_site && launch_site.site_name}</LaunchSite>
         </DataWrapper>
         <DataWrapper>
-            <EventDateUTC>{launch_date_utc}</EventDateUTC>
+            <EventDateUTC>{formattedDate}</EventDateUTC>
             <Nationality>{nationality}</Nationality>
         </DataWrapper>
         <DataWrapper>
@@ -101,7 +110,14 @@ export const renderLaunches = (data: DataLaunchType) => {
         <DataWrapper>
             <PayloadType>{payload_type}</PayloadType>
         </DataWrapper>
-
+        {isLoadedInModal === true && youtube_id!==null && <DataWrapper isCentered>
+            <iframe 
+                width="640" 
+                height="360"
+                src={`https://www.youtube.com/embed/${youtube_id}`}
+                >
+            </iframe>
+        </DataWrapper>}
     </div>
     )
 }
