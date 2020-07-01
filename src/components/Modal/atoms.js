@@ -15,6 +15,7 @@ export const ModalMain = s.div`
     max-width: calc(${tabletWidth} - 20px);
     min-height: 300px;
     position: absolute;
+    top: 50%;
     background: white;
     padding: 10px;
     border-radius: 5px;
