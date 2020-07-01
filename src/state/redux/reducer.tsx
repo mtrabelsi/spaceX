@@ -4,6 +4,7 @@ import { DataHistoryType, DataLaunchType } from "../../components/Table/types";
 const INITIAL_STATE : State = {
     historyData: [],
     launchesData: [],
+    filtredLaunchesData: [],
     isFetching: false,
     errorMessage: undefined
 };
@@ -21,7 +22,7 @@ const fetchTasksReducer = (state : State = INITIAL_STATE, action : UAction) : St
             return {
                     ...state,
                     //filter() does not mutate the array on which it is called, so we are safe here
-                    launchesData: action.payload ? 
+                    filtredLaunchesData: q ? 
                     launchesData.filter(l => 
                             (l.mission_name).toLowerCase().includes(q.toLowerCase())
                         ) : launchesData
@@ -36,7 +37,8 @@ const fetchTasksReducer = (state : State = INITIAL_STATE, action : UAction) : St
             return {
                 ...state,
                 isFetching: false,
-                launchesData: action.payload as DataLaunchType[]
+                launchesData: action.payload as DataLaunchType[],
+                filtredLaunchesData: action.payload as DataLaunchType[],
             };
         case "FETCH_ERROR":
         return {

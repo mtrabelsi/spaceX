@@ -10,6 +10,7 @@ import { renderLaunches } from '../../components/Table/index.helper';
 import InputSearch from '../../components/InputSearch';
 import Pagination from '../../components/Pagination';
 import Modal from '../../components/Modal';
+import { SearchFeedback, SearchFeedbackItem } from './atoms';
 
 const MAX_PER_PAGE = 7
 type AjaxPropsType = {
@@ -21,6 +22,7 @@ type MamDisToProps = MapDispatchToPropsParam<AjaxPropsType, {}>
 
 const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props) => {
     const [filter, setFilter] = useState<USearchFilter>({ limit: MAX_PER_PAGE, offset: 0 })
+    const [activePage, setActivePage] = useState<number>(0)
     const [missionName, setMissionName] = useState<string>('')
     const [shouldReload, setReload] = useState<boolean>(false)
     const [isModalOpen, changeModal] = useState<boolean>(false)
@@ -28,29 +30,29 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
     const [renderResult, setRenderResult] = useState<ReactNode>({})
     const { history } = props as RouteComponentProps
     const { searchByMissionName, reqFetchLaunches } = props as AjaxPropsType
-    const { launchesData } = props as State
-    const arrData = launchesData as DataLaunchType[]
-    const dataLength : number =  launchesData && launchesData.length
+    const { launchesData, filtredLaunchesData } = props as State
+    const dataLength : number =  filtredLaunchesData && filtredLaunchesData.length
     const launchesArr = launchesData as DataLaunchType[]
+    const filtredLaunchesArr = filtredLaunchesData as DataLaunchType[]
+
     const handleMissionChange = (e: React.ChangeEvent<HTMLInputElement>) : void => {
         const newName : string = e.target.value
         setMissionName(newName)
         searchByMissionName(newName)
     }
     const cleanupSearch = () => setMissionName('')
-    
+    //we trigger search req in memory only when missionName changes
+    useEffect(() => {   
+        searchByMissionName(missionName)
+    }, [missionName])
     //we trigger fetch everytime the filter changes
     useEffect(() => {   
-        if(missionName!=='') {
-            return
-        }
         const { limit, offset } =  filter
         reqFetchLaunches({
             limit,
             offset
         })
-    }, [filter, missionName])
-    
+    }, [filter])
     const loader = <div>Loading ...</div>;
 
     return(<Layout 
@@ -73,12 +75,18 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
             onChange={handleMissionChange}
         />
 
+        <SearchFeedback>
+            <SearchFeedbackItem><b>{launchesData.length}</b> Launches</SearchFeedbackItem>
+            <SearchFeedbackItem>Page {activePage+1}</SearchFeedbackItem>
+        </SearchFeedback>
+
+
         <Table
             dataType='launches'
-            abstractData={arrData}
+            abstractData={filtredLaunchesArr}
             itemClickHandler={console.log}
         >
-            {dataLength > 0 && launchesArr.map((d: DataLaunchType) => (
+            {dataLength > 0 && filtredLaunchesArr.map((d: DataLaunchType) => (
                 <TableItem
                     key={d.flight_number}
                     dataType='launches'
@@ -95,12 +103,14 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
         </Table>
         <Pagination 
             itemsCountPerPage={MAX_PER_PAGE}
-            lastQueriedLength={arrData.length}
+            lastQueriedLength={filtredLaunchesArr.length}
             limit={filter.limit}
             offset={filter.offset}
             setFilter={(f: USearchFilter) => {
                 setFilter(f)
             }}
+            activePage={activePage}
+            setActivePage={setActivePage}
         />
     </Layout>)
 }

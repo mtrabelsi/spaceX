@@ -6,6 +6,7 @@ export type DataType = unknown
 export type State = {
     historyData: unknown[],
     launchesData: unknown[],
+    filtredLaunchesData: unknown[],
     isFetching: boolean,
     errorMessage: ErrorMessageType
 }

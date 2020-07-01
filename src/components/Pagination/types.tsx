@@ -9,7 +9,9 @@ export type PaginationCPropType = {
     lastQueriedLength: number,
     leftLabel?: string,
     rightLabel?: string,
-    setFilter: SetFilterType
+    setFilter: SetFilterType,
+    activePage: number,
+    setActivePage: (n: number) => void
 }
 
 export type PageChangeSignature = (n: number) => void

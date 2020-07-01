@@ -14,9 +14,10 @@ function PaginationC(props: PaginationCPropType) {
         lastQueriedLength,
         itemsCountPerPage,
         leftLabel,
-        rightLabel
+        rightLabel,
+        activePage,
+        setActivePage
     }  = props
-    const [activePage, setActivePage] = useState<number>(0)
     const handlePageChange : PageChangeSignature = (newPage) => {
         setFilter({
             limit,
