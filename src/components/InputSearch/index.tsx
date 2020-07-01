@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Children } from 'react';
 import SearchIcon from './../../assets/icons/Search.png'
 import CloseIcon from './../../assets/icons/Close.png'
 
@@ -20,7 +20,6 @@ const InputSearch : React.FC<any> = (props) => {
                 {...props}
               />
             </MarginFix>
-
         </InputSearchWrap>)
 }
 

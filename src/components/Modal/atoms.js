@@ -14,7 +14,6 @@ export const ModalMain = s.div`
     width: calc(100% - 60px);
     max-width: calc(${tabletWidth} - 20px);
     min-height: 300px;
-    height: 300px;
     position: absolute;
     background: white;
     padding: 10px;
@@ -30,6 +29,8 @@ export const ModalControl = s.div`
 export const ModalTitle = s.h1`
 `
 export const ModalContent = s.section`
+  display: flex;
+  justify-content: center;
 `
 export const ModalBody = s.section`
   display: flex;

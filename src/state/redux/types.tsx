@@ -24,5 +24,7 @@ export type UAction = {
 
 export type USearchFilter = {
     limit: number,
-    offset: number
+    offset: number,
+    start?: string,
+    end?: string
 }

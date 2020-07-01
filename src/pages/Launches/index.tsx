@@ -1,5 +1,7 @@
-import React, { useEffect, useState, ReactNode } from 'react'
+import React, { useEffect, useState, ReactNode, SyntheticEvent } from 'react'
 import { connect, MapDispatchToPropsParam, useSelector } from 'react-redux'
+import { Calendar } from "grommet";
+import moment from 'moment'
 import { UAction, State, USearchFilter } from './../../state/redux/types';
 import Layout from '../../components/Layout';
 import { RouteComponentProps } from 'react-router-dom';
@@ -10,7 +12,9 @@ import { renderLaunches } from '../../components/Table/index.helper';
 import InputSearch from '../../components/InputSearch';
 import Pagination from '../../components/Pagination';
 import Modal from '../../components/Modal';
-import { SearchFeedback, SearchFeedbackItem } from './atoms';
+import { SearchFeedback, SearchFeedbackItem, FiltersWraper } from './atoms';
+import { Button } from '../../components/Button/atoms';
+import { formatDateLayout } from '../../utils';
 
 const MAX_PER_PAGE = 7
 type AjaxPropsType = {
@@ -21,7 +25,7 @@ type AjaxPropsType = {
 type MamDisToProps = MapDispatchToPropsParam<AjaxPropsType, {}>
 
 const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props) => {
-    const [filter, setFilter] = useState<USearchFilter>({ limit: MAX_PER_PAGE, offset: 0 })
+    const [filter, setFilter] = useState<USearchFilter>({ limit: MAX_PER_PAGE, offset: 0, start: '2010-06-16', end: '2015-06-25' })
     const [activePage, setActivePage] = useState<number>(0)
     const [missionName, setMissionName] = useState<string>('')
     const [shouldReload, setReload] = useState<boolean>(false)
@@ -40,6 +44,16 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
         setMissionName(newName)
         searchByMissionName(newName)
     }
+    const handleDateFilter : (dates: any) => any = (dates : any) => {
+        if(Array.isArray(dates)) {//only handle the range cases
+            const [[startDate, endDate]] = dates
+            setFilter({
+                ...filter,
+                start: moment(startDate).format(formatDateLayout),
+                end: moment(endDate).format(formatDateLayout)
+            })
+        }
+    }
     const cleanupSearch = () => setMissionName('')
     //we trigger search req in memory only when missionName changes
     useEffect(() => {   
@@ -47,14 +61,9 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
     }, [missionName])
     //we trigger fetch everytime the filter changes
     useEffect(() => {   
-        const { limit, offset } =  filter
-        reqFetchLaunches({
-            limit,
-            offset
-        })
+        reqFetchLaunches(filter)
     }, [filter])
     const loader = <div>Loading ...</div>;
-
     return(<Layout 
             showBackButton 
             history={history}
@@ -68,12 +77,37 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
         >
             {renderResult}
         </Modal>}
-        <InputSearch 
-            placeholder="Filter by Mission name"
-            rightIconClickHandler={cleanupSearch}
-            value={missionName}
-            onChange={handleMissionChange}
-        />
+
+        <FiltersWraper>
+            <Button 
+                simpleMode 
+                special 
+                style={{
+                    width: 100,
+                    alignSelf: 'flex-end'
+                }}
+                onClick={() => {
+                    setRenderResult(
+                        <Calendar 
+                            dates={[[filter.start, filter.end]]} 
+                            range 
+                            onSelect={handleDateFilter}
+                            style={{
+                                marginBottom: 60
+                            }}
+                        />
+                    );
+                    changeModal(true);
+                }}> 
+                    {filter.start} - {filter.end} 
+            </Button>
+            <InputSearch 
+                placeholder="Filter by Mission name"
+                rightIconClickHandler={cleanupSearch}
+                value={missionName}
+                onChange={handleMissionChange}
+            />
+        </FiltersWraper>
 
         <SearchFeedback>
             <SearchFeedbackItem><b>{launchesData.length}</b> Launches</SearchFeedbackItem>
@@ -107,7 +141,7 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
             limit={filter.limit}
             offset={filter.offset}
             setFilter={(f: USearchFilter) => {
-                setFilter(f)
+                setFilter({...filter, ...f})
             }}
             activePage={activePage}
             setActivePage={setActivePage}

@@ -13,3 +13,8 @@ export const SearchFeedback = s.section`
 `
 export const SearchFeedbackItem = s.section`
 `
+
+export const FiltersWraper = s.section`
+    display: flex;
+    flex-direction: column;
+`
