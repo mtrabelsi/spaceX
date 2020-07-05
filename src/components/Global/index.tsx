@@ -44,7 +44,7 @@ export const HorizontalEllipsis = (maxWidth: number) => `
   width: ${maxWidth}px;
 `;
 
-// A JS mixin for Horizontally Elipsis
+// A JS mixin for fonts
 export const fontify = () => `
   font-family: ${fontFamily};
 `;
