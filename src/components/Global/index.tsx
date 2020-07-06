@@ -22,7 +22,7 @@ export const secondaryFontSize = '14px';
 
 // shadow and boxes
 export const defaultBoxShadow = '0px 3px 29px rgba(59, 74, 116, 0.135473)';
-export const specialBoxShadow = '0 1px 3px rgba(20,167,133,.4)';
+export const simpleBoxShadow = '0 1px 3px rgba(20,167,133,.4)';
 
 // A JS mixin for vertical Ellipsis
 export const VerticalEllipsis = (nbrOfLines: number) => `

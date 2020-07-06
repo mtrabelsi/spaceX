@@ -5,7 +5,7 @@ import {
   backgroundImage,
   veryLightColor,
   defaultBoxShadow,
-  specialBoxShadow,
+  simpleBoxShadow,
   endColor,
   errorColor,
 } from '../Global';
@@ -23,7 +23,7 @@ export const Button = s.button<ButtonPropType>`
   opacity: ${(p) => (p.disabled ? 0.3 : 1)};
   cursor: ${(p) => (p.disabled ? 'none' : 'pointer')};
   pointer-events: ${(p) => (p.disabled ? 'none' : 'initial')};
-  box-shadow: ${(p) => (p.simpleMode ? specialBoxShadow : defaultBoxShadow)};
+  box-shadow: ${(p) => (p.simpleMode ? simpleBoxShadow : defaultBoxShadow)};
   background: ${(p) => decideBackground(p)};
   border: none;
   color: ${veryLightColor};
@@ -42,7 +42,6 @@ export const Button = s.button<ButtonPropType>`
 `;
 
 export const ButtonText = s.span`
-
   font-size: ${secondaryFontSize};
   font-family: ${fontFamily};
   font-style: normal;
