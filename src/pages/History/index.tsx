@@ -7,6 +7,7 @@ import Table from '../../components/Table';
 import { DataHistoryType } from '../../components/Table/types';
 import TableItem from '../../components/Table/TableItem';
 import { renderHistory } from '../../components/Table/index.helper';
+import { ActionMapper } from '../../state/redux/actions';
 
 type AjaxPropsType = {
     reqFetchHistory: () => void
@@ -56,7 +57,9 @@ const mapStateToProps = (state : State) : State => ({
 });
 
 const mapDispatchToProps : MamDisToProps = (dispatch : (p: UAction) => void) => ({
-  reqFetchHistory: () => dispatch({ type: 'REQ_FETCH_HISTORY' }),
+  reqFetchHistory: () => dispatch({
+    type: ActionMapper.REQ_FETCH_HISTORY,
+  }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(History);

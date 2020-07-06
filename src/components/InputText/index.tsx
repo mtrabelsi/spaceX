@@ -15,6 +15,7 @@ const InputBasic : React.FC<InputSearchPropType> = (props) => {
     hasIconLeft,
     inputStyle,
     hasIconRight,
+    onChange,
     value,
   } = props;
 
@@ -34,6 +35,7 @@ const InputBasic : React.FC<InputSearchPropType> = (props) => {
 
       <Input
         value={value}
+        onChange={onChange}
         style={inputStyle}
         type="text"
         placeholder={placeholder}

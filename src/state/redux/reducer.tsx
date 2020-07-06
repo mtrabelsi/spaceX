@@ -1,5 +1,6 @@
 import { State, UAction } from './types';
 import { DataHistoryType, DataLaunchType } from '../../components/Table/types';
+import { ActionMapper } from './actions';
 
 const INITIAL_STATE : State = {
   historyData: [],
@@ -11,13 +12,13 @@ const INITIAL_STATE : State = {
 
 const fetchTasksReducer = (state : State = INITIAL_STATE, action : UAction) : State => {
   switch (action.type) {
-    case 'FETCH_START': {
+    case ActionMapper.FETCH_START: {
       return {
         ...state,
         isFetching: true,
       };
     }
-    case 'SEARCH_LAUNCHES_BY_MISSION': {
+    case ActionMapper.SEARCH_LAUNCHES_BY_MISSION: {
       const launchesData = state.launchesData as Array<DataLaunchType>;
       const q = action.payload as string;
       return {
@@ -28,14 +29,14 @@ const fetchTasksReducer = (state : State = INITIAL_STATE, action : UAction) : St
           : launchesData,
       };
     }
-    case 'FETCH_SUCCESS_HISTORY': {
+    case ActionMapper.FETCH_SUCCESS_HISTORY: {
       return {
         ...state,
         isFetching: false,
         historyData: action.payload as DataHistoryType[],
       };
     }
-    case 'FETCH_SUCCESS_LAUNCHES': {
+    case ActionMapper.FETCH_SUCCESS_LAUNCHES: {
       return {
         ...state,
         isFetching: false,
@@ -43,7 +44,7 @@ const fetchTasksReducer = (state : State = INITIAL_STATE, action : UAction) : St
         filtredLaunchesData: action.payload as DataLaunchType[],
       };
     }
-    case 'FETCH_ERROR': {
+    case ActionMapper.FETCH_ERROR: {
       return {
         ...state,
         isFetching: false,

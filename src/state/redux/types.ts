@@ -10,14 +10,17 @@ export type State = {
     errorMessage: ErrorMessageType
 }
 
+export type UActionLabels =
+    'FETCH_SUCCESS_HISTORY' |
+    'FETCH_SUCCESS_LAUNCHES' |
+    'FETCH_ERROR' |
+    'FETCH_START' |
+    'REQ_FETCH_LAUNCHES' |
+    'REQ_FETCH_HISTORY' |
+    'SEARCH_LAUNCHES_BY_MISSION';
+
 export type UAction = {
-    type: 'FETCH_SUCCESS_HISTORY' |
-            'FETCH_SUCCESS_LAUNCHES' |
-            'FETCH_ERROR' |
-            'FETCH_START' |
-            'REQ_FETCH_LAUNCHES' |
-            'REQ_FETCH_HISTORY' |
-            'SEARCH_LAUNCHES_BY_MISSION',
+    type: UActionLabels,
     payload?: unknown
 }
 

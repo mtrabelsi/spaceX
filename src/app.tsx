@@ -2,13 +2,12 @@ import React from 'react';
 import {
   BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
-import { State } from './state/redux/types';
 import Home from './pages/Home';
 import History from './pages/History';
 import Launches from './pages/Launches';
 import NotFound from './pages/NotFound';
 
-const MainApp : React.FC<State> = () => (
+const MainApp : React.FC<any> = () => (
   <React.StrictMode>
     <Router>
       <Switch>

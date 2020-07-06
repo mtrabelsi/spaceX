@@ -17,6 +17,8 @@ import Modal from '../../components/Modal';
 import { SearchFeedback, SearchFeedbackItem, FiltersWraper } from './atoms';
 import { Button } from '../../components/Button/atoms';
 import { formatDateLayout } from '../../utils';
+import { ActionMapper } from '../../state/redux/actions';
+import SeachIcon from '../../assets/icons/Search.png';
 
 const MAX_PER_PAGE = 7;
 type AjaxPropsType = {
@@ -117,7 +119,8 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
           value={missionName}
           onChange={handleMissionChange}
           hasIconLeft={false}
-          hasIconRight={false}
+          hasIconRight
+          rightIcon={SeachIcon}
         />
       </FiltersWraper>
 
@@ -173,7 +176,11 @@ const mapStateToProps = (state : State) : State => ({
 });
 
 const mapDispatchToProps : MamDisToProps = (dispatch : (p: UAction) => void) => ({
-  reqFetchLaunches: (filter) => dispatch({ type: 'REQ_FETCH_LAUNCHES', payload: filter }),
-  searchByMissionName: (missionName) => dispatch({ type: 'SEARCH_LAUNCHES_BY_MISSION', payload: missionName }),
+  reqFetchLaunches: (filter) => dispatch({
+    type: ActionMapper.REQ_FETCH_LAUNCHES, payload: filter,
+  }),
+  searchByMissionName: (missionName) => dispatch({
+    type: ActionMapper.SEARCH_LAUNCHES_BY_MISSION, payload: missionName,
+  }),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Launches);
