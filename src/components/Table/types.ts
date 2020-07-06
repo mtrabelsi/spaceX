@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { ReactNode } from 'react';
 
 export type Link = {

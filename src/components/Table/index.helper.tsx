@@ -1,41 +1,54 @@
 import React from 'react';
 import moment from 'moment';
 import {
-  DataWrapper, Title, EventDateUnix, EventDateUTC, Details, Links, Link, MissionName, LaunchSite, Nationality, Manufacturer, PayloadType,
+  DataWrapper,
+  Title,
+  EventDateUnix,
+  EventDateUTC,
+  Details,
+  Links,
+  Link,
+  MissionName,
+  LaunchSite,
+  Nationality,
+  Manufacturer,
+  PayloadType,
 } from './atoms';
 import { DataHistoryType, DataLaunchType } from './types';
 import { formatDateLayout } from '../../utils';
 
-const LinkWithTaget = (props: any) => <Link {...props} target="_blank">{props.children}</Link>;
+const LinkWithTaget = ({ style, href, children } : any) => <Link style={style} href={href} target="_blank">{children}</Link>;
 
-const getAlign = (arr: any[], index: number): 'left' | 'center' | 'right' => {
+const getAlign = (arr : any[], index : number) : 'left' | 'center' | 'right' => {
   if (index === 0) {
     return 'left';
-  } if (index < arr.length - 1) {
+  }
+  if (index < arr.length - 1) {
     return 'center';
   }
   return 'right';
 };
 
-export const renderHistory = (data: DataHistoryType) => {
+export const renderHistory = (data : DataHistoryType) => {
   const {
-    id,
     title,
-    event_date_utc,
-    event_date_unix,
+    event_date_utc: eventDateUtc,
+    event_date_unix: eventDateUnix,
     details,
-    links: { reddit, article, wikipedia },
+    links: {
+      reddit,
+      article,
+      wikipedia,
+    },
   } = data as DataHistoryType;
   const linksArr = [
     {
       link: reddit,
       label: 'Reddit',
-    },
-    {
+    }, {
       link: article,
       label: 'Article',
-    },
-    {
+    }, {
       link: wikipedia,
       label: 'Wikipedia',
     },
@@ -44,10 +57,10 @@ export const renderHistory = (data: DataHistoryType) => {
     <div>
       <DataWrapper>
         <Title>{title}</Title>
-        <EventDateUnix>{event_date_unix}</EventDateUnix>
+        <EventDateUnix>{eventDateUnix}</EventDateUnix>
       </DataWrapper>
       <DataWrapper>
-        <EventDateUTC>{event_date_utc}</EventDateUTC>
+        <EventDateUTC>{eventDateUtc}</EventDateUTC>
       </DataWrapper>
       <DataWrapper>
         <Details>{details}</Details>
@@ -57,7 +70,9 @@ export const renderHistory = (data: DataHistoryType) => {
           {linksArr.map((linkObj, index) => (
             <LinkWithTaget
               key={linkObj.label}
-              style={{ textAlign: getAlign(linksArr, index) }}
+              style={{
+                textAlign: getAlign(linksArr, index),
+              }}
               href={linkObj.link}
             >
               {linkObj.label}
@@ -69,36 +84,35 @@ export const renderHistory = (data: DataHistoryType) => {
   );
 };
 
-export const renderLaunches = (data: DataLaunchType, isLoadedInModal?: boolean) => {
+export const renderLaunches = (data : DataLaunchType, isLoadedInModal?: boolean) => {
   const {
-    flight_number,
-    mission_name,
-    launch_date_utc,
-    launch_site,
+    flight_number: flightNumber,
+    mission_name: missionName,
+    launch_date_utc: launchDateUtc,
+    launch_site: launchSite,
     details,
     links: {
-      youtube_id,
+      youtube_id: youtubeId,
     },
     rocket: {
       second_stage: {
         payloads,
       },
     },
-    links,
   } = data as DataLaunchType;
   const {
-    manufacturer,
-    payload_id,
-    nationality,
-    payload_type,
+    manufacturer, nationality, payload_type: payloadType,
   } = payloads && payloads[0];
 
-  const formattedDate = moment(launch_date_utc).format(formatDateLayout);
+  const formattedDate = moment(launchDateUtc).format(formatDateLayout);
   return (
-    <div style={{ paddingBottom: 20 }}>
+    <div style={{
+      paddingBottom: 20,
+    }}
+    >
       <DataWrapper>
-        <MissionName>{mission_name}</MissionName>
-        <LaunchSite>{launch_site && launch_site.site_name}</LaunchSite>
+        <MissionName>{missionName}</MissionName>
+        <LaunchSite>{launchSite && launchSite.site_name}</LaunchSite>
       </DataWrapper>
       <DataWrapper>
         <EventDateUTC>{formattedDate}</EventDateUTC>
@@ -109,14 +123,15 @@ export const renderLaunches = (data: DataLaunchType, isLoadedInModal?: boolean) 
         <Manufacturer>{manufacturer}</Manufacturer>
       </DataWrapper>
       <DataWrapper>
-        <PayloadType>{payload_type}</PayloadType>
+        <PayloadType>{payloadType}</PayloadType>
       </DataWrapper>
-      {isLoadedInModal === true && youtube_id !== null && (
+      {isLoadedInModal === true && youtubeId !== null && (
         <DataWrapper isCentered>
           <iframe
+            title={`Video ${flightNumber}`}
             width="640"
             height="360"
-            src={`https://www.youtube.com/embed/${youtube_id}`}
+            src={`https://www.youtube.com/embed/${youtubeId}`}
           />
         </DataWrapper>
       )}

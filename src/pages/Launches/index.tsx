@@ -7,7 +7,7 @@ import moment from 'moment';
 import { RouteComponentProps } from 'react-router-dom';
 import { UAction, State, USearchFilter } from '../../state/redux/types';
 import Layout from '../../components/Layout';
-import { DataLaunchType, DataHistoryType } from '../../components/Table/types';
+import { DataLaunchType } from '../../components/Table/types';
 import Table from '../../components/Table';
 import TableItem from '../../components/Table/TableItem';
 import { renderLaunches } from '../../components/Table/index.helper';
@@ -32,15 +32,13 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
   });
   const [activePage, setActivePage] = useState<number>(0);
   const [missionName, setMissionName] = useState<string>('');
-  const [shouldReload, setReload] = useState<boolean>(false);
   const [isModalOpen, changeModal] = useState<boolean>(false);
   // this is rendered when user click on a row
   const [renderResult, setRenderResult] = useState<ReactNode>({});
-  const { history } = props as RouteComponentProps;
+  const { history, match, location } = props as RouteComponentProps;
   const { searchByMissionName, reqFetchLaunches } = props as AjaxPropsType;
   const { launchesData, filtredLaunchesData } = props as State;
   const dataLength : number = filtredLaunchesData && filtredLaunchesData.length;
-  const launchesArr = launchesData as DataLaunchType[];
   const filtredLaunchesArr = filtredLaunchesData as DataLaunchType[];
 
   const handleMissionChange = (e: React.ChangeEvent<HTMLInputElement>) : void => {
@@ -67,12 +65,13 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
   useEffect(() => {
     reqFetchLaunches(filter);
   }, [filter]);
-  const loader = <div>Loading ...</div>;
   return (
     <Layout
       showBackButton
-      history={history}
       title="Launches View"
+      history={history}
+      match={match}
+      location={location}
     >
       {isModalOpen && (
       <Modal
@@ -117,6 +116,8 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
           rightIconClickHandler={cleanupSearch}
           value={missionName}
           onChange={handleMissionChange}
+          hasIconLeft={false}
+          hasIconRight={false}
         />
       </FiltersWraper>
 

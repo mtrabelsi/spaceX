@@ -13,9 +13,14 @@ const ErrorMessage = s.section`
 `;
 
 function NotFound(props: (NotFoundProps | RouteComponentProps)) {
-  const { history } = props as RouteComponentProps;
+  const { history, match, location } = props as RouteComponentProps;
   return (
-    <Layout title="Horrible things happen, sometimes...">
+    <Layout
+      title="Horrible things happen, sometimes..."
+      history={history}
+      match={match}
+      location={location}
+    >
       <ErrorMessage>
         Requested page does not exist! this page serves as a fall back error page,
         feel free to customize it at: /pages/NotFound/index.tsx

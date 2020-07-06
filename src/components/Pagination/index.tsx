@@ -28,14 +28,12 @@ function PaginationC(props: PaginationCPropType) {
     <PaginationWrapper>
       <LeftNavigator
         disabled={activePage === 0}
-        start
-        onClick={(e: React.MouseEvent) => handlePageChange(activePage - 1)}
+        onClick={() => handlePageChange(activePage - 1)}
       >
         {(leftLabel || 'Prev').toUpperCase()}
       </LeftNavigator>
       <RightNavigator
-        start={false}
-        onClick={(e: React.MouseEvent) => handlePageChange(activePage + 1)}
+        onClick={() => handlePageChange(activePage + 1)}
         disabled={lastQueriedLength < itemsCountPerPage}
       >
         {(rightLabel || 'Next').toUpperCase()}

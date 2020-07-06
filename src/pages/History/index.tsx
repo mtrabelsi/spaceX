@@ -15,7 +15,7 @@ type MamDisToProps = MapDispatchToPropsParam<AjaxPropsType, {}>
 
 const History : React.FC<State | AjaxPropsType | RouteComponentProps> = (props) => {
   const { historyData } = props as State;
-  const { history } = props as RouteComponentProps;
+  const { history, location, match } = props as RouteComponentProps;
   const arrData = historyData as DataHistoryType[];
   const dataLength : number = historyData && historyData.length;
   const historyArr = historyData as DataHistoryType[];
@@ -27,8 +27,10 @@ const History : React.FC<State | AjaxPropsType | RouteComponentProps> = (props) 
   return (
     <Layout
       showBackButton
-      history={history}
       title="History View"
+      history={history}
+      location={location}
+      match={match}
     >
       <Table
         dataType="history"

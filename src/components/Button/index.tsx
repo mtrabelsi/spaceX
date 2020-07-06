@@ -6,21 +6,23 @@ import { ButtonPropType } from './types';
 
 const Btn: React.FC<ButtonPropType | RouteComponentProps> = (props) => {
   const {
-    start,
     disabled,
     buttonStyle,
+    simpleMode,
+    isDanger,
     iconLeft,
     hasIconLeft,
     value,
     imgStyle,
     textStyle,
-    isDanger,
+    onClick,
   } = props as ButtonPropType;
   return (
     <Button
-      {...props}
-      start={start}
+      onClick={onClick}
+      simpleMode={simpleMode}
       disabled={disabled}
+      isDanger={isDanger}
       style={buttonStyle}
     >
       {hasIconLeft && iconLeft && <Img src={iconLeft} style={imgStyle} />}

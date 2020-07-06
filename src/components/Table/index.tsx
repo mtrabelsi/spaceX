@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { RouteComponentProps } from 'react-router-dom';
 import { DataHistoryType, DataLaunchType } from './types';
 
 type TableProps = {
@@ -9,24 +7,20 @@ type TableProps = {
     itemClickHandler: (id: string) => void
 }
 
-const Table : React.FC<RouteComponentProps | TableProps> = (props) => {
-  const { dataType, abstractData, itemClickHandler } = props as TableProps;
+const Table : React.FC<TableProps> = (props) => {
+  const { abstractData, children } = props;
   const dataLength : number = abstractData && abstractData.length;
 
   return (
     <section>
 
-      {props.children}
+      {children}
 
       {dataLength === 0
         && <div>No Item found!</div>}
 
     </section>
   );
-};
-
-Table.propTypes = {
-  abstractData: PropTypes.array,
 };
 
 Table.defaultProps = {

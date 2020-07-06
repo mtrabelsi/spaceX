@@ -11,15 +11,15 @@ type LayoutProps = {
     topBarStyle?: object
 }
 
-const Layout: React.FC<LayoutProps | RouteComponentProps> = (props) => {
+const Layout: React.FC<LayoutProps & RouteComponentProps> = (props) => {
   const {
     showBackButton,
     style,
     history,
     title,
     topBarStyle,
-  } = props as (LayoutProps & RouteComponentProps);
-
+    children,
+  } = props;
   return (
     <LayoutMain style={style}>
       <LayoutTopBar style={{ ...topBarStyle, flexWrap: 'wrap' }}>
@@ -27,13 +27,13 @@ const Layout: React.FC<LayoutProps | RouteComponentProps> = (props) => {
         <Button
           hasIconLeft
           iconLeft={LeftArrowIcon}
-          onClick={(e) => history.goBack()}
+          onClick={() => history.goBack()}
           value="Home"
         />
         )}
         {title !== '' && <LayoutTitle>{title}</LayoutTitle>}
       </LayoutTopBar>
-      {props.children}
+      {children}
     </LayoutMain>
   );
 };

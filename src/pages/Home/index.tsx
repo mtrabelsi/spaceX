@@ -3,9 +3,10 @@ import { RouteComponentProps } from 'react-router-dom';
 import { backgroundImage, veryLightColor } from '../../components/Global';
 import Layout from '../../components/Layout';
 import { Button } from '../../components/Button/atoms';
+import BtnNavigator from './BtnNavigator';
 
 const Home : React.FC<RouteComponentProps> = (props) => {
-  const { history } = props;
+  const { history, match, location } = props;
   return (
     <Layout
       title="Home View"
@@ -21,30 +22,26 @@ const Home : React.FC<RouteComponentProps> = (props) => {
         flexDirection: 'column',
         flexWrap: 'wrap',
       }}
+      history={history}
+      match={match}
+      location={location}
     >
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-        padding: '100px 50px',
-        flexWrap: 'wrap',
-      }}
-      >
+      <BtnNavigator>
         <Button
           simpleMode
           special
-          onClick={(e: React.MouseEvent) => history.push('/history')}
+          onClick={() => history.push('/history')}
         >
           History
         </Button>
         <Button
           simpleMode
           special
-          onClick={(e: React.MouseEvent) => history.push('/launches')}
+          onClick={() => history.push('/launches')}
         >
           Launches
         </Button>
-      </div>
+      </BtnNavigator>
     </Layout>
   );
 };

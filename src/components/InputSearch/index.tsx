@@ -1,24 +1,47 @@
 import React from 'react';
-import SearchIcon from '../../assets/icons/Search.png';
 import CloseIcon from '../../assets/icons/Close.png';
 
 import InputText from '../InputText';
 import { InputSearchWrap, MarginFix } from './atoms';
+import { InputSearchPropType } from './types';
 
-const InputSearch : React.FC<any> = (props) => {
-  const isInputDirty = props.value !== '';
+const InputSearch : React.FC<InputSearchPropType> = (props) => {
+  const {
+    inputWrapperStyle,
+    containerStyle,
+    leftIcon,
+    leftIconClickHandler,
+    leftIconStyle,
+    placeholder,
+    rightIconClickHandler,
+    rightIcon,
+    rightIconStyle,
+    hasIconLeft,
+    inputStyle,
+    hasIconRight,
+    value,
+    onChange,
+  } = props;
+  const isInputDirty = value !== '';
   return (
     <InputSearchWrap
-      style={props.containerStyle}
+      style={containerStyle}
     >
       <MarginFix>
         <InputText
-          placeholder={props.placeholder || 'Placeholder not set!'}
-          rightIcon={isInputDirty ? CloseIcon : SearchIcon}
-          hasIconRight
-          primaryBorder
-          primaryColor
-          {...props}
+          onChange={onChange}
+          placeholder={placeholder || 'Placeholder not set!'}
+          hasIconRight={hasIconRight}
+          rightIcon={isInputDirty ? CloseIcon : rightIcon}
+          rightIconStyle={rightIconStyle}
+          rightIconClickHandler={rightIconClickHandler}
+          hasIconLeft={hasIconLeft}
+          leftIcon={leftIcon}
+          leftIconStyle={leftIconStyle}
+          leftIconClickHandler={leftIconClickHandler}
+          inputWrapperStyle={inputWrapperStyle}
+          value={value}
+          inputStyle={inputStyle}
         />
       </MarginFix>
     </InputSearchWrap>

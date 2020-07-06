@@ -1,38 +1,55 @@
 import React from 'react';
 import { Input, InputWrap, Img } from './atoms';
+import { InputSearchPropType } from '../InputSearch/types';
 
-const InputBasic : React.FC<any> = (props) => (
-  <InputWrap
-    {...props}
-    style={props.inputWrapperStyle}
-  >
-    {props.hasIconLeft
-            && props.leftIcon
+const InputBasic : React.FC<InputSearchPropType> = (props) => {
+  const {
+    inputWrapperStyle,
+    leftIcon,
+    leftIconClickHandler,
+    leftIconStyle,
+    placeholder,
+    rightIconClickHandler,
+    rightIcon,
+    rightIconStyle,
+    hasIconLeft,
+    inputStyle,
+    hasIconRight,
+    value,
+  } = props;
+
+  return (
+    <InputWrap
+      style={inputWrapperStyle}
+    >
+      {hasIconLeft
+            && leftIcon
             && (
             <Img
-              style={props.leftIconStyle}
-              src={props.leftIcon}
-              onClick={props.leftIconClickHandler}
+              style={leftIconStyle}
+              src={leftIcon}
+              onClick={leftIconClickHandler}
             />
             )}
 
-    <Input
-      {...props}
-      style={props.inputStyle}
-      type="text"
-      placeholder={props.placeholder}
-    />
+      <Input
+        value={value}
+        style={inputStyle}
+        type="text"
+        placeholder={placeholder}
+      />
 
-    {props.hasIconRight
-            && props.rightIcon
+      {hasIconRight
+            && rightIcon
             && (
             <Img
-              style={props.rightIconStyle}
-              src={props.rightIcon}
-              onClick={props.rightIconClickHandler}
+              style={rightIconStyle}
+              src={rightIcon}
+              onClick={rightIconClickHandler}
             />
             )}
-  </InputWrap>
-);
+    </InputWrap>
+  );
+};
 
 export default InputBasic;
