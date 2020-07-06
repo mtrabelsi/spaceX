@@ -10,7 +10,7 @@ import { UAction } from '../redux/types';
 function* fetchHistory() {
   try {
     yield put({ type: ActionMapper.FETCH_START });
-    const res = yield fetch('https://api.spacexdata.com/v3/history');
+    const res = yield call(fetch, 'https://api.spacexdata.com/v3/history');
     const json = yield res.json();
     yield put(fetchSuccessHistory(json));
   } catch (error) {
@@ -25,7 +25,7 @@ function* fetchLaunches({ payload: filter }: UAction) {
   }
   try {
     yield put({ type: ActionMapper.FETCH_START });
-    const res = yield fetch(`https://api.spacexdata.com/v3/launches${query}`);
+    const res = yield call(fetch, `https://api.spacexdata.com/v3/launches${query}`);
     const json = yield res.json();
     yield put(fetchSuccessLaunches(json));
   } catch (error) {

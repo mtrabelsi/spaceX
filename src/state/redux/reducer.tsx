@@ -2,7 +2,7 @@ import { State, UAction } from './types';
 import { DataHistoryType, DataLaunchType } from '../../components/Table/types';
 import { ActionMapper } from './actions';
 
-const INITIAL_STATE : State = {
+export const INITIAL_STATE : State = {
   historyData: [],
   launchesData: [],
   filtredLaunchesData: [],
