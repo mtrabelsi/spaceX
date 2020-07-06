@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import {
   BrowserRouter as Router, Switch, Route,
 } from 'react-router-dom';
@@ -36,8 +35,4 @@ const MainApp : React.FC<State> = () => (
   </React.StrictMode>
 );
 
-const mapStateToProps = (state : State) : State => ({
-  ...state,
-});
-
-export default connect(mapStateToProps, {})(MainApp);
+export default MainApp;
