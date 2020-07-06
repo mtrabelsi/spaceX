@@ -1,5 +1,3 @@
-
-
 export type ButtonPropType = {
     buttonStyle?: object,
     disabled?: boolean,

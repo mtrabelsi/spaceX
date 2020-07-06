@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
-import fetchReducer from './reducer'
+import fetchReducer from './reducer';
 
 const rootReducer = combineReducers({
-    tasks: fetchReducer,
+  tasks: fetchReducer,
 });
-
 
 export default rootReducer;

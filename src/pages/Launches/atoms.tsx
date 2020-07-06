@@ -1,5 +1,5 @@
-import s from 'styled-components'
-import { fontFamily, secondaryFontSize, secondaryColor } from '../../components/Global'
+import s from 'styled-components';
+import { fontFamily, secondaryFontSize, secondaryColor } from '../../components/Global';
 
 export const SearchFeedback = s.section`
     margin: 15px 0;
@@ -10,11 +10,11 @@ export const SearchFeedback = s.section`
     display: flex;
     justify-content: space-between;
     padding: 0 8px;
-`
+`;
 export const SearchFeedbackItem = s.section`
-`
+`;
 
 export const FiltersWraper = s.section`
     display: flex;
     flex-direction: column;
-`
+`;

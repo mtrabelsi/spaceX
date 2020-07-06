@@ -1,17 +1,14 @@
-import React from 'react'
-import s from 'styled-components'
+import s from 'styled-components';
 import {
-    primarytColor,
-    secondaryColor,
-    lightColor,
-    primaryFontSize,
-    fontFamily
-  } from './../Global'
+  lightColor,
+  primaryFontSize,
+  fontFamily,
+} from '../Global';
 
 export const InputWrap = s.div`
   border-bottom: 1px solid ${lightColor};
   display: flex;
-`
+`;
 export const Input = s.input`
   color: ${lightColor};
   background-color: transparent;
@@ -26,9 +23,9 @@ export const Input = s.input`
     font-family: ${fontFamily};
     opacity: 0.4;
   }
-`
+`;
 export const Img = s.img`
   height: 20px;
   padding: 9px;
   cursor: pointer;
-`
+`;

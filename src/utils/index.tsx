@@ -1,3 +1,1 @@
-
-
-export const formatDateLayout = 'YYYY-MM-DD'
+export const formatDateLayout = 'YYYY-MM-DD';

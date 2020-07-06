@@ -1,8 +1,8 @@
-import React, { useEffect, Dispatch } from 'react'
-import { connect, MapDispatchToPropsFactory, MapDispatchToPropsParam } from 'react-redux'
-import { UAction, State } from './../../state/redux/types';
-import Layout from '../../components/Layout';
+import React, { useEffect } from 'react';
+import { connect, MapDispatchToPropsParam } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
+import { UAction, State } from '../../state/redux/types';
+import Layout from '../../components/Layout';
 import Table from '../../components/Table';
 import { DataHistoryType } from '../../components/Table/types';
 import TableItem from '../../components/Table/TableItem';
@@ -14,47 +14,47 @@ type AjaxPropsType = {
 type MamDisToProps = MapDispatchToPropsParam<AjaxPropsType, {}>
 
 const History : React.FC<State | AjaxPropsType | RouteComponentProps> = (props) => {
-    const { historyData } = props as State
-    const { history } = props as RouteComponentProps
-    const arrData = historyData as DataHistoryType[]
-    const dataLength : number =  historyData && historyData.length
-    const historyArr = historyData as DataHistoryType[] 
-    useEffect(() => {   
-        const { reqFetchHistory } = props as AjaxPropsType
-        reqFetchHistory()
-    }, [])
+  const { historyData } = props as State;
+  const { history } = props as RouteComponentProps;
+  const arrData = historyData as DataHistoryType[];
+  const dataLength : number = historyData && historyData.length;
+  const historyArr = historyData as DataHistoryType[];
+  useEffect(() => {
+    const { reqFetchHistory } = props as AjaxPropsType;
+    reqFetchHistory();
+  }, []);
 
-    return(<Layout 
-            showBackButton 
-            history={history}
-            title="History View"
-        >
-        <Table
-            dataType='history'
-            abstractData={arrData}
+  return (
+    <Layout
+      showBackButton
+      history={history}
+      title="History View"
+    >
+      <Table
+        dataType="history"
+        abstractData={arrData}
+        itemClickHandler={console.log}
+      >
+        {dataLength > 0 && historyArr.map((d: DataHistoryType) => (
+          <TableItem
+            dataType="history"
+            key={d.id}
+            renderData={() => renderHistory(d)}
+            itemData={d}
             itemClickHandler={console.log}
-        >
-            {dataLength > 0 && historyArr.map((d: DataHistoryType) => (
-                <TableItem
-                    dataType='history'
-                    key={d.id}
-                    renderData={() => renderHistory(d)}
-                    itemData={d} 
-                    itemClickHandler={console.log} 
-                />))
-            }
-        </Table>
-    </Layout>)
-}
+          />
+        ))}
+      </Table>
+    </Layout>
+  );
+};
 
 const mapStateToProps = (state : State) : State => ({
-    ...state
-})
+  ...state,
+});
 
-const mapDispatchToProps : MamDisToProps = (dispatch : (p: UAction) => void) => {
-    return {
-        reqFetchHistory: () => dispatch({ type: 'REQ_FETCH_HISTORY' })
-    }
-}
-  
-export default connect(mapStateToProps, mapDispatchToProps)(History)
+const mapDispatchToProps : MamDisToProps = (dispatch : (p: UAction) => void) => ({
+  reqFetchHistory: () => dispatch({ type: 'REQ_FETCH_HISTORY' }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(History);

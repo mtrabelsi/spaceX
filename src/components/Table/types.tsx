@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { ReactNode } from 'react';
 
 export type Link = {
     reddit: string | null,

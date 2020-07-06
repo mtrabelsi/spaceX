@@ -1,23 +1,21 @@
-
-import React, { Component } from 'react';
+import React from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import { Button, ButtonText } from './atoms';
 import { Img } from '../InputText/atoms';
 import { ButtonPropType } from './types';
-import { RouteComponentProps } from 'react-router-dom';
-
 
 const Btn: React.FC<ButtonPropType | RouteComponentProps> = (props) => {
   const {
-    start, 
+    start,
     disabled,
     buttonStyle,
     iconLeft,
     hasIconLeft,
     value,
     imgStyle,
-    textStyle, 
-    isDanger
-  } = props as ButtonPropType
+    textStyle,
+    isDanger,
+  } = props as ButtonPropType;
   return (
     <Button
       {...props}
@@ -29,6 +27,6 @@ const Btn: React.FC<ButtonPropType | RouteComponentProps> = (props) => {
       <ButtonText style={textStyle}>{value}</ButtonText>
     </Button>
   );
-}
-  
+};
+
 export default Btn;
