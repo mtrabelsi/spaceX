@@ -19,8 +19,9 @@ Since the app is built using Mobile first approach in mind, so we invite you to 
 
 - Vanilla JS
 - React.JS
-- Webpack (custom config)
+- 	~~Webpack (custom config)	~~  migrated to react-scripts
 - Typescript
+- Jest for testing
 - Styled-component :
   great for making contextual Styled components, it is also compatible with SCSS.
 
