@@ -97,7 +97,7 @@ const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props)
           onClick={() => {
             setRenderResult(
               <Calendar
-                dates={[[filter.start, filter.end]]}
+                dates={[[filter.start!, filter.end!]]}
                 range
                 onSelect={handleDateFilter}
                 style={{

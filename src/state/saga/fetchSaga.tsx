@@ -5,7 +5,7 @@ import queryString from 'query-string';
 import {
   fetchSuccessHistory, fetchSuccessLaunches, fetchError, ActionMapper,
 } from '../redux/actions';
-import { UAction } from '../redux/types';
+import { UAction, USearchFilter } from '../redux/types';
 
 function* fetchHistory() {
   try {
@@ -21,7 +21,7 @@ function* fetchHistory() {
 export function* fetchLaunches({ payload: filter }: UAction) {
   let query : string = '';
   if (filter) {
-    query = '?'.concat(queryString.stringify(filter));
+    query = '?'.concat(queryString.stringify(filter as USearchFilter));
   }
   try {
     yield put({ type: ActionMapper.FETCH_START });
