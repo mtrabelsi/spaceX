@@ -24,7 +24,7 @@ it('fetchLaunches({}) should work without NO filters', async () => {
 it('fetchLaunches(filter) should work with a filter', async () => {
   // filled filter
   const iterator = fetchLaunches({
-    type: 'REQ_FETCH_LAUNCHES',
+    type: ActionMapper.REQ_FETCH_LAUNCHES,
     payload: { limit: 5, offset: 2 },
   });
   // first call should start fetching
