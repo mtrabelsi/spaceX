@@ -4,9 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build": "webpack",
-    "serve": "webpack-dev-server",
-    "start": "run-s build serve",
+    "build": "react-scripts build",
+    "start": "react-scripts start",
     "lint": "eslint ./src",
     "test": "react-scripts test --env=jsdom"
   },
@@ -45,8 +44,6 @@
     "@types/redux-logger": "^3.0.8",
     "@types/styled-components": "^5.1.0",
     "grommet": "^2.14.0",
-    "html-webpack-plugin": "^4.3.0",
-    "lodash": "^4.17.15",
     "moment": "^2.27.0",
     "prop-types": "^15.7.2",
     "query-string": "^6.13.1",
