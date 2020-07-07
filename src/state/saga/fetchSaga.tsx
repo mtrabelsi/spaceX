@@ -18,7 +18,7 @@ function* fetchHistory() {
   }
 }
 
-function* fetchLaunches({ payload: filter }: UAction) {
+export function* fetchLaunches({ payload: filter }: UAction) {
   let query : string = '';
   if (filter) {
     query = '?'.concat(queryString.stringify(filter));
