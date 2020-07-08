@@ -1,3 +1,9 @@
+# Demo
+
+live https://space-x-ten.vercel.app/
+
+(Please note that this is a free hosting account, so the app may goe sleep if it stays inactive)
+
 # How to run
 
 Assuming you have already installed Node.js.
