@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect, MapDispatchToPropsParam } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
-import { UAction, State } from '../../state/redux/types';
+import { UAction, State, UActionLabels } from '../../state/redux/types';
 import Layout from '../../components/Layout';
 import Table from '../../components/Table';
 import { DataHistoryType } from '../../components/Table/types';
@@ -12,8 +12,6 @@ import { ActionMapper } from '../../state/redux/actions';
 type AjaxPropsType = {
     reqFetchHistory: () => void
 }
-type MamDisToProps = MapDispatchToPropsParam<AjaxPropsType, {}>
-
 const History : React.FC<State | AjaxPropsType | RouteComponentProps> = (props) => {
   const { historyData } = props as State;
   const { history, location, match } = props as RouteComponentProps;
@@ -56,10 +54,13 @@ const mapStateToProps = (state : State) : State => ({
   ...state,
 });
 
-const mapDispatchToProps : MamDisToProps = (dispatch : (p: UAction) => void) => ({
+type HistoryDispatchType = (p: UAction) => void
+type MapDispatchType = MapDispatchToPropsParam<{ reqFetchHistory: () => void; }, {}>
+
+const mapDispatchToProps = (dispatch : HistoryDispatchType) => ({
   reqFetchHistory: () => dispatch({
-    type: ActionMapper.REQ_FETCH_HISTORY,
+    type: ActionMapper.REQ_FETCH_HISTORY as UActionLabels,
   }),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(History);
+export default connect(mapStateToProps, mapDispatchToProps as MapDispatchType)(History);

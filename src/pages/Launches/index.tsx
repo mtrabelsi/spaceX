@@ -26,7 +26,6 @@ type AjaxPropsType = {
     searchByMissionName: (missionName: string) => void
 }
 
-type MamDisToProps = MapDispatchToPropsParam<AjaxPropsType, {}>
 
 const Launches : React.FC<State | AjaxPropsType | RouteComponentProps> = (props) => {
   const [filter, setFilter] = useState<USearchFilter>({
@@ -175,12 +174,16 @@ const mapStateToProps = (state : State) : State => ({
   ...state,
 });
 
-const mapDispatchToProps : MamDisToProps = (dispatch : (p: UAction) => void) => ({
-  reqFetchLaunches: (filter) => dispatch({
+
+type LaunchesDispatchType = (p: UAction) => void
+type MamDisToProps = MapDispatchToPropsParam<AjaxPropsType, {}>
+
+const mapDispatchToProps = (dispatch : LaunchesDispatchType) => ({
+  reqFetchLaunches: (filter : USearchFilter) => dispatch({
     type: ActionMapper.REQ_FETCH_LAUNCHES, payload: filter,
   }),
-  searchByMissionName: (missionName) => dispatch({
+  searchByMissionName: (missionName : string) => dispatch({
     type: ActionMapper.SEARCH_LAUNCHES_BY_MISSION, payload: missionName,
   }),
 });
-export default connect(mapStateToProps, mapDispatchToProps)(Launches);
+export default connect(mapStateToProps, mapDispatchToProps as MamDisToProps)(Launches);
