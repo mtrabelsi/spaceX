@@ -19,13 +19,13 @@ It will build and lift a server at 3000 port with hot reloading enabled.
 
 # Unit test
 
-To run the test run :
+To Launch the unit test/components test run :
 
 ```
 npm run test
 ```
 
-You will be prompted with option to run all of the test, press "a"
+You will be prompted with many options, to run all of the tests, press "a"
 
 # Technology used 
 
