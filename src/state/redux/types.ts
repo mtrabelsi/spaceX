@@ -20,7 +20,7 @@ export type UActionLabels =
     'SEARCH_LAUNCHES_BY_MISSION';
 
 export type UAction = {
-    type: UActionLabels,
+    type?: UActionLabels,
     payload?: unknown
 }
 

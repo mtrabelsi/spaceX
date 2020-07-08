@@ -10,7 +10,7 @@ export const INITIAL_STATE : State = {
   errorMessage: undefined,
 };
 
-const fetchTasksReducer = (state : State = INITIAL_STATE, action : UAction) : State => {
+const fetchTasksReducer = (state : State = INITIAL_STATE, action : UAction = {}) : State => {
   switch (action.type) {
     case ActionMapper.FETCH_START: {
       return {
