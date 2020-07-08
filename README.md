@@ -31,6 +31,7 @@ You will be prompted with many options, to run all of the tests, press "a"
 
 - Vanilla JS
 - React.JS
+- Redux + Saga middlware
 - 	~~Webpack (custom config)~~  migrated to react-scripts
 - Typescript
 - Jest for testing
