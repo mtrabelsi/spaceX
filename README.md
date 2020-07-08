@@ -17,14 +17,21 @@ npm start
 
 It will build and lift a server at 3000 port with hot reloading enabled.
 
-# Testing
+# Unit test
 
-Since the app is built using Mobile first approach in mind, so we invite you to use Chrome tools to simulate Android devices and 4K screens and see how the UI scale and shrinks accordingly.
+To Launch the unit test/components test run :
+
+```
+npm run test
+```
+
+You will be prompted with many options, to run all of the tests, press "a"
 
 # Technology used 
 
 - Vanilla JS
 - React.JS
+- Redux + Saga middlware
 - 	~~Webpack (custom config)~~  migrated to react-scripts
 - Typescript
 - Jest for testing
@@ -69,10 +76,10 @@ Notice how, the app can work on different screens without breaking the UI, in XL
 
 # State Management
 
-Since the application is meant to scale in the future, we implimented our state management system using Redux/saga, so all connected pages (using redux-connect)  have the data that they need and the actions to dispatch them - when they to.
+~~Since the application is meant to scale in the future, we implimented our state management system using Redux/saga, so all connected pages (using redux-connect)  have the data that they need and the actions to dispatch them - when they to.~~
 
-That being said: for the current stage of the app, redux library or any other would be overkill at the moment, in fact, we only have 2 pages!. 
-But only considering the fact that we are expecting a bigger code base we integrated them.
+~~That being said: for the current stage of the app, redux library or any other would be overkill at the moment, in fact, we only have 2 pages!. 
+But only considering the fact that we are expecting a bigger code base we integrated them.~~
 
 ## Reusability in mind
 
