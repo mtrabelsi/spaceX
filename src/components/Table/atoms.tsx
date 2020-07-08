@@ -7,6 +7,7 @@ import { DataWrapperType } from './types';
 export const StyledTableItem = s.section`
     border-bottom: 1px solid silver;
     padding: 2px;
+    cursor: pointer;
 `;
 export const Title = s.div`
     color: ${defaultColor};
