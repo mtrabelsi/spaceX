@@ -17,9 +17,15 @@ npm start
 
 It will build and lift a server at 3000 port with hot reloading enabled.
 
-# Testing
+# Unit test
 
-Since the app is built using Mobile first approach in mind, so we invite you to use Chrome tools to simulate Android devices and 4K screens and see how the UI scale and shrinks accordingly.
+To run the test run :
+
+```
+npm run test
+```
+
+You will be prompted with option to run all of the test, press "a"
 
 # Technology used 
 
