@@ -3,7 +3,9 @@ import {
   defaultBoxShadow,
   tabletWidth,
   fontify,
+  primarytColor,
 } from '../Global';
+
 export const ModalMain = s.div`
   ${fontify()};
     width: calc(100% - 60px);
@@ -15,6 +17,7 @@ export const ModalMain = s.div`
     padding: 10px;
     border-radius: 5px;
     box-shadow: ${defaultBoxShadow};
+    border: 1px solid ${primarytColor};
     z-index: 1;
 `;
 export const ModalControl = s.div`
