@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should consider all props and generate unique html based on that 1`] = `
+<section
+  className="sc-AxhUy beKucN"
+>
+  <button
+    className="sc-AxjAm sc-AxhCb fVYgu"
+    disabled={false}
+    onClick={[Function]}
+  >
+    LEFT LABEL
+  </button>
+  <button
+    className="sc-AxjAm sc-AxiKw dcLUtn"
+    disabled={true}
+    onClick={[Function]}
+  >
+    RIGHT LABEL
+  </button>
+</section>
+`;

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should consider all props and generate unique html based on that 1`] = `
+<button
+  className="sc-AxjAm fLhDvz"
+  style={
+    Object {
+      "color": "red",
+      "padding": 5,
+    }
+  }
+>
+  <img
+    className="sc-AxhUy ionFUO"
+    src="<"
+    style={
+      Object {
+        "width": 20,
+      }
+    }
+  />
+  <span
+    className="sc-AxirZ iRauBN"
+  >
+    button value
+  </span>
+</button>
+`;

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should consider all props and generate unique html based on that 1`] = `
+<section
+  className="sc-AxjAm bMhmYx"
+  style={
+    Object {
+      "width": 500,
+    }
+  }
+>
+  <section
+    className="sc-AxiKw keaLxW"
+    style={
+      Object {
+        "0": "1",
+        "1": "0",
+        "2": "0",
+        "3": "p",
+        "4": "x",
+        "flexWrap": "wrap",
+      }
+    }
+  >
+    <button
+      className="sc-AxhCb kYAQok"
+      onClick={[Function]}
+    >
+      <img
+        className="sc-Axmtr kdbydJ"
+        src="Left-Arrow.png"
+      />
+      <span
+        className="sc-AxhUy jSdugU"
+      >
+        Home
+      </span>
+    </button>
+    <h1
+      className="sc-AxirZ bEWkiU"
+    >
+      sample title
+    </h1>
+  </section>
+  <span>
+    some child data
+  </span>
+</section>
+`;

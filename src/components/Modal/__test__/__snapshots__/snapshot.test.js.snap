@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should consider all props and generate unique html based on that 1`] = `
+<div
+  className="sc-AxjAm eSCnPG"
+>
+  <h1
+    className="sc-AxiKw cydMkg"
+  >
+    sample title
+  </h1>
+  <section
+    className="sc-AxhUy hrDmoG"
+  >
+    <section
+      className="sc-AxhCb fRQPFI"
+    >
+      <span>
+        some modal child data
+      </span>
+    </section>
+    <div
+      className="sc-AxirZ cqzgpd"
+    >
+      <button
+        className="sc-AxgMl dNSLJb"
+        onClick={[Function]}
+      >
+        <span
+          className="sc-AxheI fqGtiw"
+        >
+          Submit
+        </span>
+      </button>
+      <button
+        className="sc-AxgMl jbpKxJ"
+        onClick={[Function]}
+      >
+        <span
+          className="sc-AxheI fqGtiw"
+        >
+          Close
+        </span>
+      </button>
+    </div>
+  </section>
+</div>
+`;

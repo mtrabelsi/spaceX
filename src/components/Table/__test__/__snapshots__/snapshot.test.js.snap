@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should consider all props and generate unique html based on that 1`] = `<section />`;

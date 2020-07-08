@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should consider all props and generate unique html based on that 1`] = `
+<div
+  className="sc-AxjAm faPnbs"
+  style={
+    Object {
+      "color": "red",
+      "padding": 5,
+    }
+  }
+>
+  <img
+    className="sc-AxiKw cuzgab"
+    onClick={[Function]}
+    src="s"
+  />
+  <input
+    className="sc-AxirZ eIeUVT"
+    type="text"
+    value="some text in the input"
+  />
+</div>
+`;
